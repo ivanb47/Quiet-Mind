@@ -1,11 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
-import {Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { Text, View } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import AppNavigation from "./src/navigation/AppNavigation";
+import { ThemeProvider } from "@rneui/themed";
+import { theme } from "./src/screens/globalStyles";
 
 export default function App() {
   return (
-    <View >
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ThemeProvider theme={theme}>
+      <AppNavigation />
+    </ThemeProvider>
   );
 }
