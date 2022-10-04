@@ -32,10 +32,18 @@ const LoginStackScreen = () => {
     </LoginStack.Navigator>
   );
 };
-const HomeStackScreen = () => {
+const HomeStackScreen = (theme) => {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="HomeScreen" component={HomeScreen} />
+      <HomeStack.Screen
+        name="HomeScreen"
+        initialParams={{ theme: theme }}
+        component={HomeScreen}
+        options={{
+          headerTitle: "Home",
+          headerShown: false,
+        }}
+      />
     </HomeStack.Navigator>
   );
 };
@@ -54,7 +62,7 @@ const ChatStackScreen = () => {
   );
 };
 
-const AppNavigation = () => {
+const AppNavigation = ({ theme }) => {
   return (
     <NavigationContainer>
       <Tab.Navigator
