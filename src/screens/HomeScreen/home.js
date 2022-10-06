@@ -10,6 +10,7 @@ import {
 import React from "react";
 import QuoteBox from "../../components/QuoteBox";
 import SuggestionCard from "../../components/SuggestionCard";
+import ItemCard from "../../components/ItemCard";
 import { ShowAllButton } from "../../components/ReusableComponents";
 import styles from "./homeStyles";
 import { ThemeProvider, useTheme } from "@rneui/themed";
@@ -22,14 +23,14 @@ const Home = () => {
       id: 1,
       title: "Title",
       description: "Description",
-      image: require("../../assets/images/quote.png"),
+      image: require("../../assets/images/Placeholder.png"),
       type: "type",
     },
     {
       id: 2,
       title: "Title",
       description: "Description",
-      image: require("../../assets/images/quote.png"),
+      image: require("../../assets/images/Placeholder.png"),
       type: "type",
     },
     {
@@ -46,6 +47,16 @@ const Home = () => {
   return (
     <SafeAreaView style={homeStyles.mainContainer}>
       <ScrollView style={homeStyles.contentContainer}>
+        <View>
+          <Text
+            style={[
+              homeStyles.titleText,
+              { textAlign: "center", paddingVertical: 20 },
+            ]}
+          >
+            LOGO
+          </Text>
+        </View>
         <Text style={homeStyles.titleText}>Quote of the day</Text>
         <QuoteBox style={homeStyles} quote={quote} quoteBy={quoteBy} />
         <Text style={homeStyles.titleText}>Placeholder</Text>
@@ -60,6 +71,40 @@ const Home = () => {
           renderItem={(item) => (
             <SuggestionCard style={homeStyles} item={item} />
           )}
+          contentContainerStyle={{ paddingBottom: 20 }}
+          ListFooterComponent={() => <ShowAllButton onPress={() => {}} />}
+          ListFooterComponentStyle={{
+            alignSelf: "center",
+            marginTop: 20,
+            marginRight: 20,
+          }}
+        />
+        <Text style={homeStyles.titleText}>Exercises</Text>
+        <FlatList
+          data={items}
+          horizontal={true}
+          snapToAlignment={"center"}
+          decelerationRate={"fast"}
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(item) => item.id}
+          renderItem={(item) => <ItemCard style={homeStyles} item={item} />}
+          contentContainerStyle={{ paddingBottom: 20 }}
+          ListFooterComponent={() => <ShowAllButton onPress={() => {}} />}
+          ListFooterComponentStyle={{
+            alignSelf: "center",
+            marginTop: 20,
+            marginRight: 20,
+          }}
+        />
+        <Text style={homeStyles.titleText}>Musics</Text>
+        <FlatList
+          data={items}
+          horizontal={true}
+          snapToAlignment={"center"}
+          decelerationRate={"fast"}
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(item) => item.id}
+          renderItem={(item) => <ItemCard style={homeStyles} item={item} />}
           contentContainerStyle={{ paddingBottom: 20 }}
           ListFooterComponent={() => <ShowAllButton onPress={() => {}} />}
           ListFooterComponentStyle={{

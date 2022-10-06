@@ -10,7 +10,7 @@ export const ShowAllButton = ({ onPress }) => {
         resizeMode="contain"
         source={require("../assets/images/arrow.png")}
       />
-      <Text>Show all</Text>
+      <Text style={style.text}>Show all</Text>
     </TouchableOpacity>
   );
 };

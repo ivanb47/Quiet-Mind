@@ -6,7 +6,7 @@ const styles = () => {
   const windowWidth = Dimensions.get("window").width;
   return StyleSheet.create({
     quoteContainer: {
-      marginTop: 20,
+      marginVertical: 20,
       backgroundColor: theme.colors.cardColor,
       borderRadius: 15,
       padding: 10,
@@ -52,6 +52,19 @@ const styles = () => {
       height: 60,
       borderRadius: 50,
     },
+    itemCardRow: {
+      marginTop: 20,
+      width: 280,
+      backgroundColor: theme.colors.cardColor,
+      borderRadius: 15,
+      padding: 15,
+      marginHorizontal: 20,
+    },
+    itemCardImage: {
+      width: 250,
+      height: 130,
+      borderRadius: 8,
+    },
     title: {
       fontSize: globalStyles.fontSet.title3,
       color: theme.colors.black,
@@ -69,6 +82,9 @@ const styles = () => {
       alignItems: "center",
       justifyContent: "center",
     },
+    text: {
+      color: theme.colors.black,
+    },
     arrow: {
       width: 80,
       height: 20,
@@ -82,7 +98,7 @@ const styles = () => {
       },
       shadowOpacity: 0.25,
       shadowRadius: 3.84,
-      elevation: 7,
+      elevation: 5,
     },
   });
 };

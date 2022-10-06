@@ -13,7 +13,6 @@ const styles = () => {
       paddingBottom: 20,
     },
     titleText: {
-      paddingTop: 20,
       paddingLeft: 20,
       fontSize: globalStyles.fontSet.title1,
       color: theme.colors.primary,
