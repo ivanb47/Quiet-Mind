@@ -8,6 +8,7 @@ const styles = () => {
     quoteContainer: {
       marginVertical: 20,
       backgroundColor: theme.colors.cardColor,
+      opacity: 0.9,
       borderRadius: 15,
       padding: 10,
       marginHorizontal: 20,
@@ -37,6 +38,7 @@ const styles = () => {
       paddingHorizontal: 10,
     },
     suggestionCardRow: {
+      opacity: 0.9,
       marginTop: 20,
       width: windowWidth - 40,
       backgroundColor: theme.colors.cardColor,
@@ -53,6 +55,7 @@ const styles = () => {
       borderRadius: 50,
     },
     itemCardRow: {
+      opacity: 0.9,
       marginTop: 20,
       width: 280,
       backgroundColor: theme.colors.cardColor,

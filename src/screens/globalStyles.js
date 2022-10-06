@@ -13,6 +13,8 @@ export const theme = createTheme({
     secondary: "#9a586f",
     tertiary: "#1c6c8a",
     cardColor: "#fff",
+    bgGradientStart: "#e8f7ff",
+    bgGradientEnd: "#ffe8f0",
   },
   darkColors: {
     ...darkColors,
@@ -20,7 +22,9 @@ export const theme = createTheme({
     primary: "#fdfefc",
     secondary: "#9a586f",
     tertiary: "#1c6c8a",
-    cardColor: "#333",
+    cardColor: "#1c1c1c",
+    bgGradientStart: "#040f14",
+    bgGradientEnd: "#211015",
   },
 });
 
