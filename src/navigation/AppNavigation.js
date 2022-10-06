@@ -1,6 +1,8 @@
 import { View, Text } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
+import { ThemeProvider } from "@rneui/themed";
+import { useTheme } from "@rneui/themed";
 // Imports for navigation handling
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -35,7 +37,14 @@ const LoginStackScreen = () => {
 const HomeStackScreen = () => {
   return (
     <HomeStack.Navigator>
-      <HomeStack.Screen name="HomeScreen" component={HomeScreen} />
+      <HomeStack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{
+          headerTitle: "Home",
+          headerShown: false,
+        }}
+      />
     </HomeStack.Navigator>
   );
 };
@@ -55,12 +64,16 @@ const ChatStackScreen = () => {
 };
 
 const AppNavigation = () => {
+  const { theme } = useTheme();
   return (
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarShowLabel: false,
           headerShown: false,
+          tabBarStyle: {
+            backgroundColor: theme.colors.background,
+          },
         })}
       >
         <Tab.Screen
@@ -68,7 +81,11 @@ const AppNavigation = () => {
           options={{
             tabBarIcon: ({ focused, color, size }) =>
               focused ? (
-                <Ionicons name="home" size={size} color={color} />
+                <Ionicons
+                  name="home"
+                  size={size}
+                  color={theme.colors.primary}
+                />
               ) : (
                 <Ionicons name="home-outline" size={size} color={color} />
               ),
@@ -80,7 +97,11 @@ const AppNavigation = () => {
           options={{
             tabBarIcon: ({ focused, color, size }) =>
               focused ? (
-                <Ionicons name="chatbox" size={size} color={color} />
+                <Ionicons
+                  name="chatbox"
+                  size={size}
+                  color={theme.colors.primary}
+                />
               ) : (
                 <Ionicons name="chatbox-outline" size={size} color={color} />
               ),
@@ -92,7 +113,11 @@ const AppNavigation = () => {
           options={{
             tabBarIcon: ({ focused, color, size }) =>
               focused ? (
-                <Ionicons name="settings" size={size} color={color} />
+                <Ionicons
+                  name="settings"
+                  size={size}
+                  color={theme.colors.primary}
+                />
               ) : (
                 <Ionicons name="settings-outline" size={size} color={color} />
               ),
