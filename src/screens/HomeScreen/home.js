@@ -12,7 +12,7 @@ import QuoteBox from "../../components/QuoteBox";
 import SuggestionCard from "../../components/SuggestionCard";
 import ItemCard from "../../components/ItemCard";
 import { ShowAllButton } from "../../components/ReusableComponents";
-import styles from "./HomeStyles";
+import styles from "./homeStyles";
 import { ThemeProvider, useTheme } from "@rneui/themed";
 import { LinearGradient } from "expo-linear-gradient";
 

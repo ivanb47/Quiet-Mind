@@ -52,12 +52,14 @@ const SettingStackScreen = () => {
   return (
     <SettingStack.Navigator>
       <SettingStack.Screen
-       name="SettingsScreen"
+        name="SettingsScreen"
         component={SettingsScreen}
         options={{
           headerTitle: "Settings",
-          headerShown: false,
-                  }} />
+          headerLargeTitle: true,
+          // headerShown: false,
+        }}
+      />
     </SettingStack.Navigator>
   );
 };
