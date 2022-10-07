@@ -1,6 +1,6 @@
 import { StyleSheet, Platform, StatusBar } from "react-native";
 import { useTheme } from "@rneui/themed";
-import { globalStyles } from "../globalStyles";
+import { globalStyles } from "../GlobalStyles";
 const styles = () => {
   const { theme } = useTheme();
   return StyleSheet.create({

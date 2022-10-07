@@ -51,7 +51,13 @@ const HomeStackScreen = () => {
 const SettingStackScreen = () => {
   return (
     <SettingStack.Navigator>
-      <SettingStack.Screen name="SettingsScreen" component={SettingsScreen} />
+      <SettingStack.Screen
+       name="SettingsScreen"
+        component={SettingsScreen}
+        options={{
+          headerTitle: "Settings",
+          headerShown: false,
+                  }} />
     </SettingStack.Navigator>
   );
 };
