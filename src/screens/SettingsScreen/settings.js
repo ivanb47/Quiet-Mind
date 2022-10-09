@@ -9,12 +9,12 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
-import styles from "./SettingsStyles";
+import styles from "./settingsStyles";
 import { ThemeProvider, useTheme } from "@rneui/themed";
 
-const Settings = () =>{
+const Settings = () => {
   const { theme } = useTheme();
-  const settingsStyles = styles(); 
+  const settingsStyles = styles();
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const windowWidth = Dimensions.get("window").width;{
@@ -65,7 +65,8 @@ const Settings = () =>{
               style={[
                 settingsStyles.subTitleText,
                 { textAlign: "center", paddingVertical: 20, marginTop: 150 },
-              ]}>
+              ]}
+            >
               Logout
             </Text>
 
@@ -73,15 +74,14 @@ const Settings = () =>{
               style={[
                 settingsStyles.titleText,
                 { textAlign: "center", paddingVertical: 20 },
-              ]}>
+              ]}
+            >
               LOGO
             </Text>
-
-        </View>
-    </ScrollView>
-  </SafeAreaView>
-  );
-};
-
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    );
+  }
 };
 export default Settings;
