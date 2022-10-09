@@ -15,6 +15,7 @@ import { ShowAllButton } from "../../components/ReusableComponents";
 import styles from "./homeStyles";
 import { ThemeProvider, useTheme } from "@rneui/themed";
 import { LinearGradient } from "expo-linear-gradient";
+import QuoteAPI from "../../networkCode/quoteAPI";
 
 const Home = () => {
   const { theme } = useTheme();
@@ -43,9 +44,7 @@ const Home = () => {
       type: "type",
     },
   ];
-  const quote =
-    "We cannot solve problems with the kind of thinking we employed when we came up with them.";
-  const quoteBy = "Albert Einstein";
+
   return (
     <SafeAreaView style={homeStyles.mainContainer}>
       <LinearGradient
@@ -68,7 +67,8 @@ const Home = () => {
             </Text>
           </View>
           <Text style={homeStyles.titleText}>Quote of the day</Text>
-          <QuoteBox style={homeStyles} quote={quote} quoteBy={quoteBy} />
+          <QuoteBox style={homeStyles} quote={<QuoteAPI/>}/>
+          
           <Text style={homeStyles.titleText}>Placeholder</Text>
           <FlatList
             data={items}
