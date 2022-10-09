@@ -1,12 +1,8 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
 import styles from "./styles";
-
-const QuoteBox = () => {
-
+const QuoteBox = ({ quote, quoteBy }) => {
   const style = styles();
-  // console.log(quote);
-  // console.log(quoteBy);
   return (
     <View style={[style.quoteContainer, style.backgroundShadow]}>
       <View style={style.quoteTextContainer}>
@@ -15,7 +11,7 @@ const QuoteBox = () => {
           style={style.quoteImage}
           mode="contain"
         />
-        <Text style={style.quoteText}></Text>
+        <Text style={style.quoteText}>{quote}</Text>
         <Image
           source={require("../assets/images/quote.png")}
           style={[
@@ -25,7 +21,7 @@ const QuoteBox = () => {
           mode="contain"
         />
       </View>
-      <Text style={style.quoteByText}></Text>
+      <Text style={style.quoteByText}> — {quoteBy}</Text>
     </View>
   );
 };

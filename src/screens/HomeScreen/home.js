@@ -7,7 +7,7 @@ import {
   Image,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import QuoteBox from "../../components/QuoteBox";
 import SuggestionCard from "../../components/SuggestionCard";
 import ItemCard from "../../components/ItemCard";
@@ -18,10 +18,20 @@ import { LinearGradient } from "expo-linear-gradient";
 import { QuoteAPI } from "../../networkCode/QuoteAPI";
 
 const Home = () => {
-  
+  const [quoteAPI , setQuoteAPI] = useState();
   const { theme } = useTheme();
   const homeStyles = styles();
   const windowWidth = Dimensions.get("window").width;
+  useEffect(() => {
+    QuoteAPI().then((res) => {
+      console.log("Result: ", res);
+      res.status ?
+      setQuoteAPI(res)
+       :
+      setQuoteAPI({ quote: "Be yourself; everyone else is already taken.", quoteBy: "Oscar Wilde" });
+    });
+  }, []);
+  
   const items = [
     {
       id: 1,
@@ -68,7 +78,7 @@ const Home = () => {
             </Text>
           </View>
           <Text style={homeStyles.titleText}>Quote of the day</Text>
-          <QuoteBox style={homeStyles} />
+          <QuoteBox style={homeStyles} quote={quoteAPI?.quote} quoteBy={quoteAPI?.quoteBy} />
           
           <Text style={homeStyles.titleText}>Placeholder</Text>
           <FlatList
