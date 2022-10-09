@@ -6,6 +6,7 @@ import {
   Image,
   View,
   Switch,
+  TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
 import styles from "./SettingsStyles";
@@ -23,22 +24,43 @@ const Settings = () =>{
         <View>
 
           <Text style={settingsStyles.titleText}>Settings</Text>
+
           <Text style={settingsStyles.subTitleText}>Preferences</Text>
-          <Text style={settingsStyles.preferencesText}>Notification</Text>
+          
+          <TouchableOpacity>
+            <Text style={settingsStyles.preferencesText}>Notification</Text>
+          </TouchableOpacity>
+
           <View style={{ flex: 1, flexDirection: "row" }} >
             <Text style={settingsStyles.preferencesText}>Dark Mode</Text>
             <Switch style={settingsStyles.swiches}/>
           </View>
+
           <View style={{flex: 1, flexDirection: "row"}} >
             <Text style={settingsStyles.preferencesText}>Show Quote On Home Screen</Text>
             <Switch style={settingsStyles.swiches}/>
           </View>
+
           <Text style={settingsStyles.subTitleText}>Support</Text>
-          <Text style={settingsStyles.preferencesText}>Contact Us</Text>
-          <Text style={settingsStyles.preferencesText}>Help and FAQs</Text>
+
+          <TouchableOpacity>
+            <Text style={settingsStyles.preferencesText}>Contact Us</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity>
+            <Text style={settingsStyles.preferencesText}>Help and FAQs</Text>
+          </TouchableOpacity>
+
           <Text style={settingsStyles.subTitleText}>Legal</Text>
-          <Text style={settingsStyles.preferencesText}>Privacy Policy</Text>
-          <Text style={settingsStyles.preferencesText}>Terms Of Use</Text>
+
+          <TouchableOpacity>
+            <Text style={settingsStyles.preferencesText}>Privacy Policy</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity>
+            <Text style={settingsStyles.preferencesText}>Terms Of Use</Text>
+          </TouchableOpacity>
+
           <Text
               style={[
                 settingsStyles.subTitleText,
@@ -46,6 +68,7 @@ const Settings = () =>{
               ]}>
               Logout
             </Text>
+
             <Text
               style={[
                 settingsStyles.titleText,
