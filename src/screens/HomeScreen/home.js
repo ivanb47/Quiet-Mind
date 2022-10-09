@@ -7,7 +7,7 @@ import {
   Image,
   View,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import QuoteBox from "../../components/QuoteBox";
 import SuggestionCard from "../../components/SuggestionCard";
 import ItemCard from "../../components/ItemCard";
@@ -15,9 +15,10 @@ import { ShowAllButton } from "../../components/ReusableComponents";
 import styles from "./homeStyles";
 import { ThemeProvider, useTheme } from "@rneui/themed";
 import { LinearGradient } from "expo-linear-gradient";
-import QuoteAPI from "../../networkCode/quoteAPI";
+import { QuoteAPI } from "../../networkCode/QuoteAPI";
 
 const Home = () => {
+  
   const { theme } = useTheme();
   const homeStyles = styles();
   const windowWidth = Dimensions.get("window").width;
@@ -67,7 +68,7 @@ const Home = () => {
             </Text>
           </View>
           <Text style={homeStyles.titleText}>Quote of the day</Text>
-          <QuoteBox style={homeStyles} quote={<QuoteAPI/>}/>
+          <QuoteBox style={homeStyles} />
           
           <Text style={homeStyles.titleText}>Placeholder</Text>
           <FlatList
