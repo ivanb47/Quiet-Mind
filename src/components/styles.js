@@ -1,6 +1,6 @@
 import { StyleSheet, Platform, Dimensions } from "react-native";
 import { useTheme } from "@rneui/themed";
-import { globalStyles } from "../screens/GlobalStyles";
+import { globalStyles } from "../screens/globalStyles";
 const styles = () => {
   const { theme } = useTheme();
   const windowWidth = Dimensions.get("window").width;

@@ -22,9 +22,6 @@ const Settings = () => {
     <SafeAreaView style={settingsStyles.mainContainer}>
       <ScrollView style={settingsStyles.contentContainer}>
         <View>
-
-          <Text style={settingsStyles.titleText}>Settings</Text>
-
           <Text style={settingsStyles.subTitleText}>Preferences</Text>
           
           <TouchableOpacity>
@@ -61,14 +58,15 @@ const Settings = () => {
             <Text style={settingsStyles.preferencesText}>Terms Of Use</Text>
           </TouchableOpacity>
 
-          <Text
+          {/* Currently we are not authenticating users so currently we don't need logout button */}
+          {/* <Text
               style={[
                 settingsStyles.subTitleText,
                 { textAlign: "center", paddingVertical: 20, marginTop: 150 },
               ]}
             >
               Logout
-            </Text>
+            </Text> */}
 
             <Text
               style={[

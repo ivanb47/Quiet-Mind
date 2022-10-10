@@ -1,10 +1,11 @@
 import { StyleSheet, Platform, StatusBar } from "react-native";
 import { useTheme } from "@rneui/themed";
-import { globalStyles } from "../GlobalStyles";
+import { globalStyles } from "../globalStyles";
 const styles = () => {
   const { theme } = useTheme();
   return StyleSheet.create({
     mainContainer: {
+      flex:1,
       backgroundColor: theme.colors.background,
       paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },
