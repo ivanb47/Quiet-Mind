@@ -9,10 +9,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 // Import for screens
-import HomeScreen from "../screens/HomeScreen/Home";
-import LoginScreen from "../screens/LoginScreen/Login";
-import SettingsScreen from "../screens/SettingsScreen/Settings";
-import ChatScreen from "../screens/ChatScreen/Chat";
+import HomeScreen from "../screens/HomeScreen/home";
+import LoginScreen from "../screens/LoginScreen/login";
+import SettingsScreen from "../screens/SettingsScreen/settings";
+import ChatScreen from "../screens/ChatScreen/chat";
 
 // navigation stack initialization for screens
 const LoginStack = createNativeStackNavigator();
