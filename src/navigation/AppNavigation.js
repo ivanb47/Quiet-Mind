@@ -13,6 +13,7 @@ import HomeScreen from "../screens/HomeScreen/Home";
 import LoginScreen from "../screens/LoginScreen/Login";
 import SettingsScreen from "../screens/SettingsScreen/Settings";
 import ChatScreen from "../screens/ChatScreen/Chat";
+import ExerciseList from "../screens/ExerciseListScreen/ExerciseList";
 
 // navigation stack initialization for screens
 const LoginStack = createNativeStackNavigator();

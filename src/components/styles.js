@@ -76,6 +76,7 @@ const styles = () => {
     description: {
       fontSize: globalStyles.fontSet.subhead,
       color: theme.colors.grey3,
+      paddingTop: 5,
     },
     textContainer: {
       height: "100%",
