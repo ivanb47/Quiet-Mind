@@ -25,22 +25,16 @@ const styles = () => {
       marginHorizontal: 20,
     },
     textInputContainer: {
-      marginTop: 20,
-      backgroundColor: theme.colors.cardColor,
-      borderRadius: 15,
-      padding: 10,
-      marginHorizontal: 20,
-      shadowOffset: {
-        width: 2,
-        height: 2,
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-      elevation: 7,
+      backgroundColor: theme.colors.background,
+      height:40,
+      borderRadius:10
+    },
+    cardwidth:{
+      width : 400
     },
 
     backgroundShadow: {
-      //   shadowColor: theme.colors.grey0,
+      shadowColor: theme.colors.grey0,
       shadowOffset: {
         width: 2,
         height: 2,
