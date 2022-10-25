@@ -29,9 +29,6 @@ const styles = () => {
       height:40,
       borderRadius:10
     },
-    cardHeight:{
-      width : 60
-    },
 
     backgroundShadow: {
       shadowColor: theme.colors.grey0,

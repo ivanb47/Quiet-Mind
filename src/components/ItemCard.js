@@ -7,7 +7,7 @@ const ItemCard = ({ item }) => {
   const styles = style();
   return (
     <TouchableOpacity
-      onPress={() => console.log("pressed")}
+      onPress={() => console.log('Pressed')}
       style={[styles.itemCardRow, styles.backgroundShadow]}
     >
       <Image source={image} style={styles.itemCardImage} />

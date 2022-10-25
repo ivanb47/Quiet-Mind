@@ -10,14 +10,14 @@ import {
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { ThemeProvider, useTheme } from "@rneui/themed";
-import styles from "./exerciselistStyles";
+import styles from "./cardStyle";
 import { LinearGradient } from "expo-linear-gradient";
 import { SearchBar } from "@rneui/themed";
-import ItemCard from "../../components/ItemCard";
+import SuggestionCard from "../../components/SuggestionCard";
 
-const ExerciseList = () => {
+const CardsList = () => {
   const { theme } = useTheme();
-  const exerciseStyles = styles();
+  const cardStyle = styles();
   const windowWidth = Dimensions.get("window").width;
   const [search, setSearch] = useState("");
 
@@ -77,7 +77,7 @@ const ExerciseList = () => {
   ];
 
   return (
-    <SafeAreaView style={exerciseStyles.mainContainer}>
+    <SafeAreaView style={cardStyle.mainContainer}>
       <LinearGradient
         // Button Linear Gradient
         colors={[
@@ -92,7 +92,7 @@ const ExerciseList = () => {
           ListHeaderComponent={()=>(
           <SearchBar 
             placeholder="Type Here..."
-            inputContainerStyle={[exerciseStyles.textInputContainer, exerciseStyles.backgroundShadow]}
+            inputContainerStyle={[cardStyle.textInputContainer, cardStyle.backgroundShadow]}
             onChangeText={updateSearch}
             value={search}
           />
@@ -101,7 +101,7 @@ const ExerciseList = () => {
           decelerationRate={"fast"}
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item) => item.id}
-          renderItem={(item) => <ItemCard style={exerciseStyles} item={item} />}
+          renderItem={(item) => <SuggestionCard style={cardStyle} item={item} />}
           contentContainerStyle={{ paddingBottom: 20 }}
         />
       </LinearGradient>
@@ -109,4 +109,4 @@ const ExerciseList = () => {
   );
 };
 
-export default ExerciseList;
+export default CardsList;

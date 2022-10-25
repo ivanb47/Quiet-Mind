@@ -13,6 +13,26 @@ const styles = () => {
       padding: 10,
       marginHorizontal: 20,
     },
+    closeButton: {
+      height: 25,
+      width: 25,
+      justifyContent: "center",
+      alignItems: "center",
+      position: "absolute",
+      right: 10,
+      top: 10,
+      borderRadius: 50,
+      backgroundColor: theme.colors.white,
+    },
+    modal: {
+      flex: 1,
+      backgroundColor: theme.colors.white,
+      borderRadius: 15,
+      marginBottom: 80,
+      marginTop: 80,
+      marginStart: 20,
+      marginEnd: 20,
+    },
     quoteTextContainer: {
       paddingTop: 10,
       flexDirection: "row",
@@ -57,7 +77,6 @@ const styles = () => {
     itemCardRow: {
       opacity: 0.9,
       marginTop: 20,
-      width: 280,
       backgroundColor: theme.colors.cardColor,
       borderRadius: 15,
       padding: 15,
@@ -103,6 +122,43 @@ const styles = () => {
       shadowOpacity: 0.25,
       shadowRadius: 3.84,
       elevation: 5,
+    },
+    tinyLogo: {
+      width: 100,
+      height: 100,
+      margin: 20,
+      alignSelf: "center",
+      backgroundColor: theme.colors.white,
+      borderRadius: 50,
+    },
+    header: {
+      textAlign: "center",
+      fontWeight: "bold",
+      fontSize: 30,
+      marginTop: 60,
+      height: "20%"
+    },
+    subHeader: {
+      textAlign: "center",
+      fontSize: 20,
+      padding:20,
+      justifyContent:'center'
+
+    },
+    modalButton:{
+      backgroundColor: theme.colors.modalButton,
+    },
+    modalView: {
+      backgroundColor: theme.colors.modalDescription,
+      padding: 20,
+      height:"40%",
+      justifyContent:'center'
+    },
+    modalDescription: {
+      textAlign: "center",
+      margin: 20,
+      fontSize: 15,
+      alignContent:'center'
     },
   });
 };
