@@ -13,6 +13,9 @@ import HomeScreen from "../screens/HomeScreen/Home";
 import LoginScreen from "../screens/LoginScreen/Login";
 import SettingsScreen from "../screens/SettingsScreen/Settings";
 import ChatScreen from "../screens/ChatScreen/Chat";
+import ExerciseListScreen from "../screens/ExerciseListScreen/ExerciseList";
+import MusicListScreen from "../screens/MusicListScreen/MusicList";
+import CardsListScreen from "../screens/CardsListScreen/CardsList";
 
 // navigation stack initialization for screens
 const LoginStack = createNativeStackNavigator();
@@ -45,6 +48,32 @@ const HomeStackScreen = () => {
           headerShown: false,
         }}
       />
+      <HomeStack.Screen
+        name="CardsList"
+        component={CardsListScreen}
+        options={{ 
+          headerTitle: "Cards",
+          headerTransparent: true,
+          headerLargeTitle: true }}
+      />
+      <HomeStack.Screen
+        name="ExerciseList"
+        component={ExerciseListScreen}
+        options={{
+          headerTitle: "Exercises",
+          headerTransparent: true,
+          headerLargeTitle: true,
+        }}
+      />
+      <HomeStack.Screen
+        name="MusicList"
+        component={MusicListScreen}
+        options={{
+          headerTitle: "Music",
+          headerTransparent: true,
+          headerLargeTitle: true,
+        }}
+      />
     </HomeStack.Navigator>
   );
 };
@@ -63,6 +92,7 @@ const SettingStackScreen = () => {
     </SettingStack.Navigator>
   );
 };
+
 const ChatStackScreen = () => {
   return (
     <ChatStack.Navigator>

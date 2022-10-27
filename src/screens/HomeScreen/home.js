@@ -16,11 +16,14 @@ import styles from "./homeStyles";
 import { ThemeProvider, useTheme } from "@rneui/themed";
 import { LinearGradient } from "expo-linear-gradient";
 import { QuoteAPI } from "../../networkCode/QuoteAPI";
+import { useLinkProps } from "@react-navigation/native";
+import ModalComponent from '../../components/ModalComponent'
 
-const Home = () => {
+const Home = (props) => {
   const [quoteAPI , setQuoteAPI] = useState();
   const { theme } = useTheme();
   const homeStyles = styles();
+  const [showModal, setShowModal] = useState(false);
   const windowWidth = Dimensions.get("window").width;
   useEffect(() => {
     QuoteAPI().then((res) => {
@@ -90,10 +93,14 @@ const Home = () => {
             showsHorizontalScrollIndicator={false}
             keyExtractor={(item) => item.id}
             renderItem={(item) => (
-              <SuggestionCard style={homeStyles} item={item} />
+              <SuggestionCard style={homeStyles} item={item} onPress={() => {
+                console.log("pressed")
+                setShowModal(true)}}/>
             )}
             contentContainerStyle={{ paddingBottom: 20 }}
-            ListFooterComponent={() => <ShowAllButton onPress={() => {}} />}
+            ListFooterComponent={() => <ShowAllButton onPress={() => {
+              props.navigation.navigate("CardsList")
+            }} />}
             ListFooterComponentStyle={{
               alignSelf: "center",
               marginTop: 20,
@@ -110,7 +117,9 @@ const Home = () => {
             keyExtractor={(item) => item.id}
             renderItem={(item) => <ItemCard style={homeStyles} item={item} />}
             contentContainerStyle={{ paddingBottom: 20 }}
-            ListFooterComponent={() => <ShowAllButton onPress={() => {}} />}
+            ListFooterComponent={() => <ShowAllButton onPress={() => {
+              props.navigation.navigate("ExerciseList")
+            }} />}
             ListFooterComponentStyle={{
               alignSelf: "center",
               marginTop: 20,
@@ -127,7 +136,9 @@ const Home = () => {
             keyExtractor={(item) => item.id}
             renderItem={(item) => <ItemCard style={homeStyles} item={item} />}
             contentContainerStyle={{ paddingBottom: 20 }}
-            ListFooterComponent={() => <ShowAllButton onPress={() => {}} />}
+            ListFooterComponent={() => <ShowAllButton onPress={() => {
+              props.navigation.navigate("MusicList")
+            }} />}
             ListFooterComponentStyle={{
               alignSelf: "center",
               marginTop: 20,
@@ -136,6 +147,7 @@ const Home = () => {
           />
         </ScrollView>
       </LinearGradient>
+      {<ModalComponent isVisible={showModal} hideModal = {()=>setShowModal(false)}/>}
     </SafeAreaView>
   );
 };
