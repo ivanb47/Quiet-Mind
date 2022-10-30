@@ -8,7 +8,7 @@ import {
   View,
   TextInput,
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import { ThemeProvider, useTheme } from "@rneui/themed";
 import styles from "./musicListStyles";
 import { LinearGradient } from "expo-linear-gradient";
@@ -27,7 +27,7 @@ const MusicList = () => {
   const [sound, setSound] = React.useState();
   const [isPlaying, setIsPlaying] = useState(false);
   const [playingSongIndex, setPlayingSongIndex] = useState(null);
-
+  const [filteredSongs, setFilteredSongs] = useState(songs);
   React.useEffect(() => {
     return sound
       ? () => {
@@ -72,31 +72,39 @@ const MusicList = () => {
   };
   const updateSearch = (search) => {
     setSearch(search);
+    const filteredSongs = songs.filter((item) => {
+      return item.title.toLowerCase().includes(search.toLowerCase());
+    });
+    setFilteredSongs(filteredSongs);
   };
 
-  const headerComponent = () => {
+  const headerComponent = useMemo(() => {
     return (
       <View>
         <SearchBar
-          placeholder="Type Here..."
+          placeholder="Search for music"
           inputContainerStyle={[
             musicStyles.textInputContainer,
             musicStyles.backgroundShadow,
           ]}
+          inputStyle={musicStyles.textInput}
           containerStyle={musicStyles.searchbarContainer}
           onChangeText={updateSearch}
           value={search}
         />
-        <Text style={musicStyles.musicHeader}>
-          Plug in your headphones and enjoy the music.🎧
-        </Text>
+        {search.length == 0 && (
+          <Text style={musicStyles.musicHeader}>
+            Plug in your headphones and enjoy the music.🎧
+          </Text>
+        )}
       </View>
     );
-  };
+  }, [search]);
   return (
     <SafeAreaView style={musicStyles.mainContainer}>
       <LinearGradient
         // Button Linear Gradient
+        style={{ flex: 1 }}
         colors={[
           theme.colors.background,
           theme.colors.bgGradientStart,
@@ -104,12 +112,17 @@ const MusicList = () => {
         ]}
       >
         <FlatList
-          data={songs}
+          data={search.length > 0 ? filteredSongs : songs}
           ListHeaderComponent={headerComponent}
           snapToAlignment={"center"}
           decelerationRate={"fast"}
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item) => item.id}
+          ListEmptyComponent={
+            <Text style={musicStyles.musicHeader}>
+              No music found for "{search}"
+            </Text>
+          }
           renderItem={(item) => (
             <MusicCard
               style={musicStyles.cardHeight}
