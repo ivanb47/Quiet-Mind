@@ -22,7 +22,7 @@ const MusicCard = ({ item, onPress, playingSongIndex, isPlaying }) => {
         imageStyle={{ borderRadius: 8 }}
         style={styles.songCardImage}
       >
-        <View style={[styles.songCardImage, { backgroundColor: "#00000055" }]}>
+        <View style={[styles.songPlayPauseIcon]}>
           <AntDesign
             name={
               playingSongIndex == null

@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, Platform } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { ThemeProvider } from "@rneui/themed";
@@ -39,7 +39,12 @@ const LoginStackScreen = () => {
 };
 const HomeStackScreen = () => {
   return (
-    <HomeStack.Navigator>
+    <HomeStack.Navigator
+      screenOptions={{
+        headerTransparent: Platform.OS == "ios" ? true : false,
+        headerLargeTitle: true,
+      }}
+    >
       <HomeStack.Screen
         name="HomeScreen"
         component={HomeScreen}
@@ -51,18 +56,15 @@ const HomeStackScreen = () => {
       <HomeStack.Screen
         name="CardsList"
         component={CardsListScreen}
-        options={{ 
+        options={{
           headerTitle: "Cards",
-          headerTransparent: true,
-          headerLargeTitle: true }}
+        }}
       />
       <HomeStack.Screen
         name="ExerciseList"
         component={ExerciseListScreen}
         options={{
           headerTitle: "Exercises",
-          headerTransparent: true,
-          headerLargeTitle: true,
         }}
       />
       <HomeStack.Screen
@@ -70,8 +72,6 @@ const HomeStackScreen = () => {
         component={MusicListScreen}
         options={{
           headerTitle: "Music",
-          headerTransparent: true,
-          headerLargeTitle: true,
         }}
       />
     </HomeStack.Navigator>

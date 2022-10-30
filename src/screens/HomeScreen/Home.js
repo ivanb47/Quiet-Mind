@@ -36,6 +36,7 @@ const Home = (props) => {
   const [playingSongIndex, setPlayingSongIndex] = useState(null);
 
   React.useEffect(() => {
+    console.log("useEffect", selectTop5Songs());
     return sound
       ? () => {
           console.log("Unloading Sound");
@@ -44,6 +45,11 @@ const Home = (props) => {
       : undefined;
   }, []);
 
+  const selectTop5Songs = () => {
+    return songs.filter((item) => {
+      return item.id < 5 && item;
+    });
+  };
   const PlayAudio = async (item) => {
     const result = await sound?.getStatusAsync();
     const { sound } = await Audio.Sound.createAsync(item.url);
@@ -199,7 +205,7 @@ const Home = (props) => {
           />
           <Text style={homeStyles.titleText}>Musics</Text>
           <FlatList
-            data={songs}
+            data={selectTop5Songs()}
             horizontal={true}
             snapToAlignment={"center"}
             decelerationRate={"fast"}

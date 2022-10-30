@@ -7,7 +7,6 @@ const styles = () => {
     mainContainer: {
       flex: 1,
       backgroundColor: theme.colors.background,
-      paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },
     contentContainer: {
       paddingBottom: 20,
@@ -26,11 +25,11 @@ const styles = () => {
     },
     textInputContainer: {
       backgroundColor: theme.colors.background,
-      height:40,
-      borderRadius:10
+      height: 40,
+      borderRadius: 10,
     },
-    cardHeight:{
-      width : 60
+    cardHeight: {
+      width: 60,
     },
 
     backgroundShadow: {
