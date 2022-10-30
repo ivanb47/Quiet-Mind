@@ -83,7 +83,15 @@ const styles = () => {
       marginHorizontal: 20,
     },
     songCardImage: {
-      width: 250,
+      minWidth: 250,
+      height: 130,
+      borderRadius: 8,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    songPlayPauseIcon: {
+      backgroundColor: "#00000055",
+      width: "100%",
       height: 130,
       borderRadius: 8,
       justifyContent: "center",

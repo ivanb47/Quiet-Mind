@@ -7,7 +7,6 @@ const styles = () => {
     mainContainer: {
       flex: 1,
       backgroundColor: theme.colors.background,
-      paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },
     contentContainer: {
       paddingBottom: 20,
@@ -17,6 +16,13 @@ const styles = () => {
       fontSize: globalStyles.fontSet.title1,
       color: theme.colors.primary,
     },
+    musicHeader: {
+      padding: 20,
+      textAlign: "center",
+      fontSize: globalStyles.fontSet.title1,
+      color: theme.colors.primary,
+      fontWeight: "300",
+    },
     listContainer: {
       marginTop: 20,
       backgroundColor: theme.colors.cardColor,
@@ -24,13 +30,22 @@ const styles = () => {
       padding: 10,
       marginHorizontal: 20,
     },
-    textInputContainer: {
+    searchbarContainer: {
       backgroundColor: theme.colors.background,
-      height:40,
-      borderRadius:10
+      borderTopColor: "transparent",
+      borderBottomColor: "transparent",
     },
-    cardHeight:{
-      width : 60
+    textInputContainer: {
+      backgroundColor:
+        Platform.OS == "ios"
+          ? theme.colors.greyOutline
+          : theme.colors.background,
+      height: 40,
+      borderRadius: 10,
+      elevation: 1,
+    },
+    cardHeight: {
+      width: 60,
     },
 
     backgroundShadow: {
