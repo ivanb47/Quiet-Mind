@@ -36,14 +36,13 @@ const Home = (props) => {
   const [playingSongIndex, setPlayingSongIndex] = useState(null);
 
   React.useEffect(() => {
-    console.log("useEffect", selectTop5Songs());
     return sound
       ? () => {
           console.log("Unloading Sound");
           sound.unloadAsync();
         }
       : undefined;
-  }, []);
+  }, [sound]);
 
   const selectTop5Songs = () => {
     return songs.filter((item) => {

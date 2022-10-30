@@ -41,7 +41,7 @@ const MusicCard = ({ item, onPress, playingSongIndex, isPlaying }) => {
       </ImageBackground>
 
       <Text style={[styles.title, { marginTop: 10 }]}>{title}</Text>
-      <Text style={styles.description}>{description}</Text>
+      {/* <Text style={styles.description}>{description}</Text> */}
     </TouchableOpacity>
   );
 };

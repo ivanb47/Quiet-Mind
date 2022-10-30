@@ -35,7 +35,7 @@ const MusicList = () => {
           sound.unloadAsync();
         }
       : undefined;
-  }, []);
+  }, [sound]);
 
   const PlayAudio = async (item) => {
     const result = await sound?.getStatusAsync();

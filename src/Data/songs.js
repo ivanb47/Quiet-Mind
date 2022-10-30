@@ -31,6 +31,41 @@ const songs = [
     id: 4,
     duration: 610,
   },
+  {
+    title: "Rain 2",
+    description: "Rain 2",
+    image: require("../assets/images/rain-2.jpg"),
+    url: require("../assets/musics/rain-2.mp3"),
+    id: 5,
+  },
+  {
+    title: "Night in forest",
+    description: "Night in forest",
+    image: require("../assets/images/night-forest.png"),
+    url: require("../assets/musics/night-in-forest.mp3"),
+    id: 6,
+  },
+  {
+    title: "Empty Mind",
+    description: "Night in forest",
+    image: require("../assets/images/empty-mind.jpg"),
+    url: require("../assets/musics/empty-mind.mp3"),
+    id: 7,
+  },
+  {
+    title: "Meditation music",
+    description: "Night in forest",
+    image: require("../assets/images/meditation.jpg"),
+    url: require("../assets/musics/meditation.mp3"),
+    id: 8,
+  },
+  {
+    title: "Meditative rain",
+    description: "Night in forest",
+    image: require("../assets/images/meditative-rain.png"),
+    url: require("../assets/musics/meditative-rain.mp3"),
+    id: 9,
+  },
 ];
 
 export default songs;
