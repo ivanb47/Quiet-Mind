@@ -1,12 +1,15 @@
-import { StyleSheet, Platform, StatusBar } from "react-native";
+import { StyleSheet, Platform, Dimensions } from "react-native";
 import { useTheme } from "@rneui/themed";
 import { globalStyles } from "../globalStyles";
 const styles = () => {
   const { theme } = useTheme();
+  const windowWidth = Dimensions.get("window").width;
+  const windowHeight = Dimensions.get("window").height;
   return StyleSheet.create({
     mainContainer: {
       flex: 1,
       backgroundColor: theme.colors.background,
+      height: windowHeight,
     },
     contentContainer: {
       paddingBottom: 20,
@@ -31,9 +34,12 @@ const styles = () => {
       marginHorizontal: 20,
     },
     searchbarContainer: {
-      backgroundColor: theme.colors.background,
+      backgroundColor: "transparent",
       borderTopColor: "transparent",
       borderBottomColor: "transparent",
+    },
+    textInput: {
+      color: theme.colors.black,
     },
     textInputContainer: {
       backgroundColor:
