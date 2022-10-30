@@ -82,6 +82,13 @@ const styles = () => {
       padding: 15,
       marginHorizontal: 20,
     },
+    songCardImage: {
+      width: 250,
+      height: 130,
+      borderRadius: 8,
+      justifyContent: "center",
+      alignItems: "center",
+    },
     itemCardImage: {
       width: 250,
       height: 130,
@@ -136,29 +143,28 @@ const styles = () => {
       fontWeight: "bold",
       fontSize: 30,
       marginTop: 60,
-      height: "20%"
+      height: "20%",
     },
     subHeader: {
       textAlign: "center",
       fontSize: 20,
-      padding:20,
-      justifyContent:'center'
-
+      padding: 20,
+      justifyContent: "center",
     },
-    modalButton:{
+    modalButton: {
       backgroundColor: theme.colors.modalButton,
     },
     modalView: {
       backgroundColor: theme.colors.modalDescription,
       padding: 20,
-      height:"40%",
-      justifyContent:'center'
+      height: "40%",
+      justifyContent: "center",
     },
     modalDescription: {
       textAlign: "center",
       margin: 20,
       fontSize: 15,
-      alignContent:'center'
+      alignContent: "center",
     },
   });
 };

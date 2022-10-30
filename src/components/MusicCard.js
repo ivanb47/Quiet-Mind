@@ -1,8 +1,15 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ImageBackground,
+} from "react-native";
 import React from "react";
 import style from "./styles";
+import { AntDesign } from "@expo/vector-icons";
 
-const MusicCard = ({ item, onPress }) => {
+const MusicCard = ({ item, onPress, playingSongIndex, isPlaying }) => {
   const { title, description, image, type } = item.item;
   const styles = style();
   return (
@@ -10,7 +17,28 @@ const MusicCard = ({ item, onPress }) => {
       onPress={onPress}
       style={[styles.itemCardRow, styles.backgroundShadow]}
     >
-      <Image source={image} style={styles.itemCardImage} />
+      <ImageBackground
+        source={image}
+        imageStyle={{ borderRadius: 8 }}
+        style={styles.songCardImage}
+      >
+        <View style={[styles.songCardImage, { backgroundColor: "#00000055" }]}>
+          <AntDesign
+            name={
+              playingSongIndex == null
+                ? "playcircleo"
+                : playingSongIndex == item.item.id
+                ? isPlaying
+                  ? "pausecircleo"
+                  : "playcircleo"
+                : "playcircleo"
+            }
+            style={styles.backgroundShadow}
+            size={60}
+            color="white"
+          />
+        </View>
+      </ImageBackground>
 
       <Text style={[styles.title, { marginTop: 10 }]}>{title}</Text>
       <Text style={styles.description}>{description}</Text>

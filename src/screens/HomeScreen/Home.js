@@ -30,69 +30,41 @@ const Home = (props) => {
   const windowWidth = Dimensions.get("window").width;
 
   // sound related
-  const sound = React.useRef(new Audio.Sound());
+
+  const [sound, setSound] = React.useState();
   const [isPlaying, setIsPlaying] = useState(false);
-  const [playingSongIndex, setPlayingSongIndex] = useState(0);
+  const [playingSongIndex, setPlayingSongIndex] = useState(null);
 
   React.useEffect(() => {
-    return () => sound.current.unloadAsync();
+    return sound
+      ? () => {
+          console.log("Unloading Sound");
+          sound.unloadAsync();
+        }
+      : undefined;
   }, []);
 
-  const LoadAudio = async (item) => {
-    console.log("Loading Sound", item);
-    const checkLoading = await sound.current.getStatusAsync();
-    if (checkLoading.isLoaded) {
-      await sound.current.unloadAsync();
-    }
-    try {
-      const result = await sound.current.loadAsync(
-        {
-          uri: item.url,
-        },
-        {},
-        true
-      );
-      // Here Song is the uri of the Audio file
-      if (result.isLoaded === false) {
-        console.log("Error in Loading Audio");
-      } else {
-        PlayAudio(item);
-      }
-    } catch (error) {
-      console.log("Error in Loading Audio");
-    }
-  };
   const PlayAudio = async (item) => {
-    console.log("Playing Audio");
-    try {
-      const result = await sound.current.getStatusAsync();
-      if (result.isLoaded) {
-        if (result.isPlaying === false) {
-          sound.current.playAsync();
-          setIsPlaying(true);
-        }
-      } else {
-        LoadAudio(item);
-      }
-    } catch (error) {
-      setIsPlaying(false);
-    }
+    const result = await sound?.getStatusAsync();
+    const { sound } = await Audio.Sound.createAsync(item.url);
+    setSound(sound);
+    setPlayingSongIndex(item.id);
+    setIsPlaying(true);
+    await sound.playAsync();
   };
   const PauseAudio = async () => {
-    console.log("Pausing Audio");
-    try {
-      const result = await sound.current.getStatusAsync();
-      if (result.isLoaded) {
-        if (result.isPlaying === true) {
-          sound.current.pauseAsync();
-          setIsPlaying(false);
-        }
-      }
-    } catch (error) {
+    console.log("Pausing Audio", sound.pauseAsync());
+    if (isPlaying === true) {
+      await sound?.pauseAsync();
       setIsPlaying(false);
     }
   };
   const PlayPauseAudio = (item) => {
+    console.log("Playing Audio", item);
+    if (playingSongIndex == null) {
+      PlayAudio(item);
+      return;
+    }
     if (item.id === playingSongIndex) {
       if (isPlaying) {
         PauseAudio();
@@ -102,9 +74,8 @@ const Home = (props) => {
     } else {
       isPlaying && PauseAudio();
       setPlayingSongIndex(item.id);
-      LoadAudio(item);
+      PlayAudio(item);
     }
-    console.log("PlayPauseAudio", isPlaying);
   };
   useEffect(() => {
     QuoteAPI().then((res) => {
@@ -238,6 +209,8 @@ const Home = (props) => {
               <MusicCard
                 style={homeStyles}
                 item={item}
+                playingSongIndex={playingSongIndex}
+                isPlaying={isPlaying}
                 onPress={() => PlayPauseAudio(item.item)}
               />
             )}
