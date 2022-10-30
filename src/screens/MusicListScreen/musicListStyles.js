@@ -16,6 +16,13 @@ const styles = () => {
       fontSize: globalStyles.fontSet.title1,
       color: theme.colors.primary,
     },
+    musicHeader: {
+      padding: 20,
+      textAlign: "center",
+      fontSize: globalStyles.fontSet.title1,
+      color: theme.colors.primary,
+      fontWeight: "300",
+    },
     listContainer: {
       marginTop: 20,
       backgroundColor: theme.colors.cardColor,
@@ -23,10 +30,19 @@ const styles = () => {
       padding: 10,
       marginHorizontal: 20,
     },
-    textInputContainer: {
+    searchbarContainer: {
       backgroundColor: theme.colors.background,
+      borderTopColor: "transparent",
+      borderBottomColor: "transparent",
+    },
+    textInputContainer: {
+      backgroundColor:
+        Platform.OS == "ios"
+          ? theme.colors.greyOutline
+          : theme.colors.background,
       height: 40,
       borderRadius: 10,
+      elevation: 1,
     },
     cardHeight: {
       width: 60,

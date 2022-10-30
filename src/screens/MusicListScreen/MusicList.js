@@ -74,58 +74,25 @@ const MusicList = () => {
     setSearch(search);
   };
 
-  const items = [
-    {
-      id: 1,
-      title: "As It Was",
-      description: "Lorem Ipsum is simply dummy text of the",
-      image: require("../../assets/images/play.png"),
-      type: "type",
-    },
-    {
-      id: 2,
-      title: "You Proof",
-      description: "Lorem Ipsum is simply dummy text of the.",
-      image: require("../../assets/images/play.png"),
-      type: "type",
-    },
-    {
-      id: 3,
-      title: "Sunroof",
-      description: "Lorem Ipsum is simply dummy text of the.",
-      image: require("../../assets/images/play.png"),
-      type: "type",
-    },
-    {
-      id: 4,
-      title: "I Ain't Worried",
-      description: "Lorem Ipsum is simply dummy text of the.",
-      image: require("../../assets/images/play.png"),
-      type: "type",
-    },
-    {
-      id: 5,
-      title: "I Like You",
-      description: "Lorem Ipsum is simply dummy text of the",
-      image: require("../../assets/images/play.png"),
-      type: "type",
-    },
-    {
-      id: 6,
-      title: "Unholy",
-      description: "Lorem Ipsum is simply dummy text of the",
-      image: require("../../assets/images/play.png"),
-      type: "type",
-    },
-    {
-      id: 7,
-      title: "Bad Habit",
-      description: "Lorem Ipsum is simply dummy text of the.",
-      image: require("../../assets/images/play.png"),
-      type: "type",
-    },
-  ];
-
+  const headerComponent = () => {
+    return (
+      <View>
+        <SearchBar
+          placeholder="Type Here..."
+          inputContainerStyle={[
+            musicStyles.textInputContainer,
+            musicStyles.backgroundShadow,
+          ]}
+          containerStyle={musicStyles.searchbarContainer}
+          onChangeText={updateSearch}
+          value={search}
+        />
+        <Text style={musicStyles.musicHeader}>
+          Plug in your headphones and enjoy the music.🎧
+        </Text>
+      </View>
+    );
+  };
   return (
     <SafeAreaView style={musicStyles.mainContainer}>
       <LinearGradient
@@ -138,17 +105,7 @@ const MusicList = () => {
       >
         <FlatList
           data={songs}
-          ListHeaderComponent={() => (
-            <SearchBar
-              placeholder="Type Here..."
-              inputContainerStyle={[
-                musicStyles.textInputContainer,
-                musicStyles.backgroundShadow,
-              ]}
-              onChangeText={updateSearch}
-              value={search}
-            />
-          )}
+          ListHeaderComponent={headerComponent}
           snapToAlignment={"center"}
           decelerationRate={"fast"}
           showsHorizontalScrollIndicator={false}
