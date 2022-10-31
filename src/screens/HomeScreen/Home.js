@@ -29,7 +29,7 @@ const Home = (props) => {
   const homeStyles = styles();
   const [showModal, setShowModal] = useState(false);
   const windowWidth = Dimensions.get("window").width;
-
+  const [adviceItem, setAdviceItem] = useState();
   // sound related
 
   const [sound, setSound] = React.useState();
@@ -162,6 +162,7 @@ const Home = (props) => {
                 item={item}
                 onPress={() => {
                   console.log("pressed");
+                  setAdviceItem(item.item);
                   setShowModal(true);
                 }}
               />
@@ -239,6 +240,7 @@ const Home = (props) => {
       {
         <ModalComponent
           isVisible={showModal}
+          advice={adviceItem}
           hideModal={() => setShowModal(false)}
         />
       }

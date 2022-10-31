@@ -3,13 +3,12 @@ import React from "react";
 import { ThemeProvider, useTheme } from "@rneui/themed";
 import styles from "./styles";
 import { Button } from "@rneui/base";
-import advices from "../Data/advices";
 const ModalComponent = (props) => {
-  const { isVisible } = props;
+  const { isVisible, advice } = props;
   const { theme } = useTheme();
   const homeStyles = styles();
   const style = styles();
-  console.log("Is visible:", isVisible);
+  console.log("Is visible:", advice);
 
   return (
     <Modal
@@ -31,17 +30,17 @@ const ModalComponent = (props) => {
           <Text>X</Text>
         </TouchableOpacity>
 
-        <Text style={style.header}>{advices.title}</Text>
+        <Text style={style.header}>{advice.title}</Text>
         <Image
           style={style.tinyLogo}
-          source={advices.image}
+          source={advice.image}
         />
         <Text style={style.subHeader}>
-          {advices.adviceShort}
+          {advice.advicehort}
         </Text>
         <View style={style.modalView}>
           <Text style={style.modalDescription}>
-            {advices.adviceLong}
+            {advice.adviceLong}
           </Text>
         </View>
         <Button style={style.modalButton}>
