@@ -18,8 +18,10 @@ import { ThemeProvider, useTheme } from "@rneui/themed";
 import { LinearGradient } from "expo-linear-gradient";
 import { QuoteAPI } from "../../networkCode/QuoteAPI";
 import { useLinkProps } from "@react-navigation/native";
-import ModalComponent from "../../components/ModalComponent";
 import { Audio } from "expo-av";
+import ModalComponent from "../../components/ModalComponent";
+
+import Exercise from "../../Data/Exercise";
 
 import songs from "../../Data/songs";
 const Home = (props) => {
@@ -118,6 +120,27 @@ const Home = (props) => {
     },
   ];
 
+  const Exercise = [
+    {
+      id: 1,
+      title: "Reading",
+      image: require("../../assets/images/Reading_exe.png"),
+      type: "type",
+    },
+    {
+      id: 2,
+      title: "Deep breathing",
+      image: require("../../assets/images/Breathing_exe.png"),
+      type: "type",
+    },
+    {
+      id: 3,
+      title: "Laughing",
+      image: require("../../assets/images/Laughing_exe.png"),
+      type: "type",
+    },
+  ];
+
   return (
     <SafeAreaView style={homeStyles.mainContainer}>
       <LinearGradient
@@ -181,7 +204,7 @@ const Home = (props) => {
           />
           <Text style={homeStyles.titleText}>Exercises</Text>
           <FlatList
-            data={items}
+            data={Exercise}
             horizontal={true}
             snapToAlignment={"center"}
             decelerationRate={"fast"}
