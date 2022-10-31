@@ -28,8 +28,8 @@ const styles = () => {
       flex: 1,
       backgroundColor: theme.colors.white,
       borderRadius: 15,
-      marginBottom: 80,
-      marginTop: 80,
+      marginBottom: 200,
+      marginTop: 100,
       marginStart: 20,
       marginEnd: 20,
     },
@@ -81,6 +81,21 @@ const styles = () => {
       borderRadius: 15,
       padding: 15,
       marginHorizontal: 20,
+    },
+    songCardImage: {
+      minWidth: 250,
+      height: 130,
+      borderRadius: 8,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    songPlayPauseIcon: {
+      backgroundColor: "#00000055",
+      width: "100%",
+      height: 130,
+      borderRadius: 8,
+      justifyContent: "center",
+      alignItems: "center",
     },
     itemCardImage: {
       width: 250,
@@ -135,30 +150,30 @@ const styles = () => {
       textAlign: "center",
       fontWeight: "bold",
       fontSize: 30,
+      paddingHorizontal: 20,
       marginTop: 60,
-      height: "20%"
+      height: "20%",
     },
     subHeader: {
       textAlign: "center",
       fontSize: 20,
-      padding:20,
-      justifyContent:'center'
-
+      padding: 20,
+      justifyContent: "center",
     },
-    modalButton:{
+    modalButton: {
       backgroundColor: theme.colors.modalButton,
     },
     modalView: {
       backgroundColor: theme.colors.modalDescription,
       padding: 20,
-      height:"40%",
-      justifyContent:'center'
+      height: "40%",
+      justifyContent: "center",
     },
     modalDescription: {
       textAlign: "center",
       margin: 20,
       fontSize: 15,
-      alignContent:'center'
+      alignContent: "center",
     },
   });
 };

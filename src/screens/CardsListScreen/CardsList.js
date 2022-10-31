@@ -14,12 +14,14 @@ import styles from "./cardStyle";
 import { LinearGradient } from "expo-linear-gradient";
 import { SearchBar } from "@rneui/themed";
 import SuggestionCard from "../../components/SuggestionCard";
+import ModalComponent from "../../components/ModalComponent";
 
 const CardsList = () => {
   const { theme } = useTheme();
   const cardStyle = styles();
   const windowWidth = Dimensions.get("window").width;
   const [search, setSearch] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   const updateSearch = (search) => {
     setSearch(search);
@@ -86,25 +88,38 @@ const CardsList = () => {
           theme.colors.bgGradientEnd,
         ]}
       >
-        
         <FlatList
           data={items}
-          ListHeaderComponent={()=>(
-          <SearchBar 
-            placeholder="Type Here..."
-            inputContainerStyle={[cardStyle.textInputContainer, cardStyle.backgroundShadow]}
-            onChangeText={updateSearch}
-            value={search}
-          />
+          ListHeaderComponent={() => (
+            <SearchBar
+              placeholder="Type Here..."
+              inputContainerStyle={[
+                cardStyle.textInputContainer,
+                cardStyle.backgroundShadow,
+              ]}
+              onChangeText={updateSearch}
+              value={search}
+            />
           )}
           snapToAlignment={"center"}
           decelerationRate={"fast"}
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item) => item.id}
-          renderItem={(item) => <SuggestionCard style={cardStyle} item={item} />}
+          renderItem={(item) => (
+            <SuggestionCard
+              style={cardStyle}
+              item={item}
+              onPress={() => {
+                console.log("pressed");
+                setShowModal(true);
+              }}
+            />
+          )}
           contentContainerStyle={{ paddingBottom: 20 }}
         />
       </LinearGradient>
+      {<ModalComponent isVisible={showModal} hideModal = {()=>setShowModal(false)}/>}
+
     </SafeAreaView>
   );
 };

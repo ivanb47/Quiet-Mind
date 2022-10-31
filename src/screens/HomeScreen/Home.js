@@ -11,30 +11,91 @@ import React, { useState, useEffect } from "react";
 import QuoteBox from "../../components/QuoteBox";
 import SuggestionCard from "../../components/SuggestionCard";
 import ItemCard from "../../components/ItemCard";
+import MusicCard from "../../components/MusicCard";
 import { ShowAllButton } from "../../components/ReusableComponents";
 import styles from "./homeStyles";
 import { ThemeProvider, useTheme } from "@rneui/themed";
 import { LinearGradient } from "expo-linear-gradient";
 import { QuoteAPI } from "../../networkCode/QuoteAPI";
 import { useLinkProps } from "@react-navigation/native";
-import ModalComponent from '../../components/ModalComponent';
-import Exercise from '../../Data/Exercise'
+import { Audio } from "expo-av";
+import ModalComponent from "../../components/ModalComponent";
+
+import Exercise from "../../Data/Exercise";
+
+import songs from "../../Data/songs";
 const Home = (props) => {
-  const [quoteAPI , setQuoteAPI] = useState();
+  const [quoteAPI, setQuoteAPI] = useState();
   const { theme } = useTheme();
   const homeStyles = styles();
   const [showModal, setShowModal] = useState(false);
   const windowWidth = Dimensions.get("window").width;
+
+  // sound related
+
+  const [sound, setSound] = React.useState();
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [playingSongIndex, setPlayingSongIndex] = useState(null);
+
+  React.useEffect(() => {
+    return sound
+      ? () => {
+          console.log("Unloading Sound");
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
+
+  const selectTop5Songs = () => {
+    return songs.filter((item) => {
+      return item.id < 5 && item;
+    });
+  };
+  const PlayAudio = async (item) => {
+    const result = await sound?.getStatusAsync();
+    const { sound } = await Audio.Sound.createAsync(item.url);
+    setSound(sound);
+    setPlayingSongIndex(item.id);
+    setIsPlaying(true);
+    await sound.playAsync();
+  };
+  const PauseAudio = async () => {
+    console.log("Pausing Audio", sound.pauseAsync());
+    if (isPlaying === true) {
+      await sound?.pauseAsync();
+      setIsPlaying(false);
+    }
+  };
+  const PlayPauseAudio = (item) => {
+    console.log("Playing Audio", item);
+    if (playingSongIndex == null) {
+      PlayAudio(item);
+      return;
+    }
+    if (item.id === playingSongIndex) {
+      if (isPlaying) {
+        PauseAudio();
+      } else {
+        PlayAudio(item);
+      }
+    } else {
+      isPlaying && PauseAudio();
+      setPlayingSongIndex(item.id);
+      PlayAudio(item);
+    }
+  };
   useEffect(() => {
     QuoteAPI().then((res) => {
       console.log("Result: ", res);
-      res.status ?
-      setQuoteAPI(res)
-       :
-      setQuoteAPI({ quote: "Be yourself; everyone else is already taken.", quoteBy: "Oscar Wilde" });
+      res.status
+        ? setQuoteAPI(res)
+        : setQuoteAPI({
+            quote: "Be yourself; everyone else is already taken.",
+            quoteBy: "Oscar Wilde",
+          });
     });
   }, []);
-  
+
   const items = [
     {
       id: 1,
@@ -102,8 +163,12 @@ const Home = (props) => {
             </Text>
           </View>
           <Text style={homeStyles.titleText}>Quote of the day</Text>
-          <QuoteBox style={homeStyles} quote={quoteAPI?.quote} quoteBy={quoteAPI?.quoteBy} />
-          
+          <QuoteBox
+            style={homeStyles}
+            quote={quoteAPI?.quote}
+            quoteBy={quoteAPI?.quoteBy}
+          />
+
           <Text style={homeStyles.titleText}>Placeholder</Text>
           <FlatList
             data={items}
@@ -114,14 +179,23 @@ const Home = (props) => {
             showsHorizontalScrollIndicator={false}
             keyExtractor={(item) => item.id}
             renderItem={(item) => (
-              <SuggestionCard style={homeStyles} item={item} onPress={() => {
-                console.log("pressed")
-                setShowModal(true)}}/>
+              <SuggestionCard
+                style={homeStyles}
+                item={item}
+                onPress={() => {
+                  console.log("pressed");
+                  setShowModal(true);
+                }}
+              />
             )}
             contentContainerStyle={{ paddingBottom: 20 }}
-            ListFooterComponent={() => <ShowAllButton onPress={() => {
-              props.navigation.navigate("CardsList")
-            }} />}
+            ListFooterComponent={() => (
+              <ShowAllButton
+                onPress={() => {
+                  props.navigation.navigate("CardsList");
+                }}
+              />
+            )}
             ListFooterComponentStyle={{
               alignSelf: "center",
               marginTop: 20,
@@ -138,9 +212,13 @@ const Home = (props) => {
             keyExtractor={(item) => item.id}
             renderItem={(item) => <ItemCard style={homeStyles} item={item} />}
             contentContainerStyle={{ paddingBottom: 20 }}
-            ListFooterComponent={() => <ShowAllButton onPress={() => {
-              props.navigation.navigate("ExerciseList")
-            }} />}
+            ListFooterComponent={() => (
+              <ShowAllButton
+                onPress={() => {
+                  props.navigation.navigate("ExerciseList");
+                }}
+              />
+            )}
             ListFooterComponentStyle={{
               alignSelf: "center",
               marginTop: 20,
@@ -149,17 +227,29 @@ const Home = (props) => {
           />
           <Text style={homeStyles.titleText}>Musics</Text>
           <FlatList
-            data={items}
+            data={selectTop5Songs()}
             horizontal={true}
             snapToAlignment={"center"}
             decelerationRate={"fast"}
             showsHorizontalScrollIndicator={false}
             keyExtractor={(item) => item.id}
-            renderItem={(item) => <ItemCard style={homeStyles} item={item} />}
+            renderItem={(item) => (
+              <MusicCard
+                style={homeStyles}
+                item={item}
+                playingSongIndex={playingSongIndex}
+                isPlaying={isPlaying}
+                onPress={() => PlayPauseAudio(item.item)}
+              />
+            )}
             contentContainerStyle={{ paddingBottom: 20 }}
-            ListFooterComponent={() => <ShowAllButton onPress={() => {
-              props.navigation.navigate("MusicList")
-            }} />}
+            ListFooterComponent={() => (
+              <ShowAllButton
+                onPress={() => {
+                  props.navigation.navigate("MusicList");
+                }}
+              />
+            )}
             ListFooterComponentStyle={{
               alignSelf: "center",
               marginTop: 20,
@@ -168,7 +258,12 @@ const Home = (props) => {
           />
         </ScrollView>
       </LinearGradient>
-      {<ModalComponent isVisible={showModal} hideModal = {()=>setShowModal(false)}/>}
+      {
+        <ModalComponent
+          isVisible={showModal}
+          hideModal={() => setShowModal(false)}
+        />
+      }
     </SafeAreaView>
   );
 };

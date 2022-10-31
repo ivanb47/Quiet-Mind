@@ -1,0 +1,71 @@
+const songs = [
+  {
+    title: "Rain",
+    image: require("../assets/images/rain.jpg"),
+    url: require("../assets/musics/Rain.mp3"),
+    description: "Rain",
+    id: 1,
+    duration: 610,
+  },
+  {
+    title: "Nature",
+    description: "Nature",
+    image: require("../assets/images/nature.jpg"),
+    url: require("../assets/musics/nature.mp3"),
+    id: 2,
+    duration: 610,
+  },
+  {
+    title: "Forest",
+    description: "Forest",
+    image: require("../assets/images/forest.jpg"),
+    url: require("../assets/musics/forest.mp3"),
+    id: 3,
+    duration: 610,
+  },
+  {
+    title: "Focus on work",
+    description: "Focus on work",
+    image: require("../assets/images/focus.jpg"),
+    url: require("../assets/musics/focus.mp3"),
+    id: 4,
+    duration: 610,
+  },
+  {
+    title: "Rain 2",
+    description: "Rain 2",
+    image: require("../assets/images/rain-2.jpg"),
+    url: require("../assets/musics/rain-2.mp3"),
+    id: 5,
+  },
+  {
+    title: "Night in forest",
+    description: "Night in forest",
+    image: require("../assets/images/night-forest.png"),
+    url: require("../assets/musics/night-in-forest.mp3"),
+    id: 6,
+  },
+  {
+    title: "Empty Mind",
+    description: "Night in forest",
+    image: require("../assets/images/empty-mind.jpg"),
+    url: require("../assets/musics/empty-mind.mp3"),
+    id: 7,
+  },
+  {
+    title: "Meditation music",
+    description: "Night in forest",
+    image: require("../assets/images/meditation.jpg"),
+    url: require("../assets/musics/meditation.mp3"),
+    id: 8,
+  },
+  {
+    title: "Meditative rain",
+    description: "Night in forest",
+    image: require("../assets/images/meditative-rain.png"),
+    url: require("../assets/musics/meditative-rain.mp3"),
+    id: 9,
+  },
+];
+
+export default songs;
