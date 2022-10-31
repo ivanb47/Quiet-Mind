@@ -11,6 +11,7 @@ import {
 import React, { useState } from "react";
 import styles from "./settingsStyles";
 import { ThemeProvider, useTheme } from "@rneui/themed";
+import advices from "../../Data/advices";
 
 const Settings = () => {
   const { theme } = useTheme();

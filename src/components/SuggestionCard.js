@@ -11,7 +11,7 @@ import ModalComponent from "./ModalComponent"
 import React, { useState } from "react";
 import style from "./styles";
 const SuggestionCard = ({ item ,onPress}) => {
-  const { title, description, image, type } = item.item;
+  const { title, adviceShort, image, type } = item.item;
  
   const styles = style();
   return (
@@ -21,7 +21,7 @@ const SuggestionCard = ({ item ,onPress}) => {
     >
       <View style={styles.textContainer}>
         <Text style={styles.title}>{title}</Text>
-        <Text style={styles.description}>{description}</Text>
+        <Text style={styles.description}>{adviceShort}</Text>
       </View>
       <Image source={image} style={styles.suggestionImage} />
      

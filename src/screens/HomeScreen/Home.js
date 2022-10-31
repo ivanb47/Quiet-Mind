@@ -23,6 +23,7 @@ import ModalComponent from "../../components/ModalComponent";
 
 import Exercise from "../../Data/Exercise";
 
+import advices from "../../Data/advices";
 import songs from "../../Data/songs";
 const Home = (props) => {
   const [quoteAPI, setQuoteAPI] = useState();
@@ -30,7 +31,7 @@ const Home = (props) => {
   const homeStyles = styles();
   const [showModal, setShowModal] = useState(false);
   const windowWidth = Dimensions.get("window").width;
-
+  const [adviceItem, setAdviceItem] = useState();
   // sound related
 
   const [sound, setSound] = React.useState();
@@ -169,9 +170,9 @@ const Home = (props) => {
             quoteBy={quoteAPI?.quoteBy}
           />
 
-          <Text style={homeStyles.titleText}>Placeholder</Text>
+          <Text style={homeStyles.titleText}>Advices</Text>
           <FlatList
-            data={items}
+            data={advices}
             horizontal={true}
             snapToInterval={windowWidth}
             snapToAlignment={"center"}
@@ -184,6 +185,7 @@ const Home = (props) => {
                 item={item}
                 onPress={() => {
                   console.log("pressed");
+                  setAdviceItem(item.item);
                   setShowModal(true);
                 }}
               />
@@ -261,6 +263,7 @@ const Home = (props) => {
       {
         <ModalComponent
           isVisible={showModal}
+          advice={adviceItem}
           hideModal={() => setShowModal(false)}
         />
       }
