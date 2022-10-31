@@ -21,6 +21,7 @@ import { useLinkProps } from "@react-navigation/native";
 import ModalComponent from "../../components/ModalComponent";
 import { Audio } from "expo-av";
 
+import advices from "../../Data/advices";
 import songs from "../../Data/songs";
 const Home = (props) => {
   const [quoteAPI, setQuoteAPI] = useState();
@@ -146,9 +147,9 @@ const Home = (props) => {
             quoteBy={quoteAPI?.quoteBy}
           />
 
-          <Text style={homeStyles.titleText}>Placeholder</Text>
+          <Text style={homeStyles.titleText}>Advices</Text>
           <FlatList
-            data={items}
+            data={advices}
             horizontal={true}
             snapToInterval={windowWidth}
             snapToAlignment={"center"}

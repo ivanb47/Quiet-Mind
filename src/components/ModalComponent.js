@@ -3,6 +3,7 @@ import React from "react";
 import { ThemeProvider, useTheme } from "@rneui/themed";
 import styles from "./styles";
 import { Button } from "@rneui/base";
+import advices from "../Data/advices";
 const ModalComponent = (props) => {
   const { isVisible } = props;
   const { theme } = useTheme();
@@ -30,19 +31,17 @@ const ModalComponent = (props) => {
           <Text>X</Text>
         </TouchableOpacity>
 
-        <Text style={style.header}>Having trouble attending class ?</Text>
+        <Text style={style.header}>{advices.title}</Text>
         <Image
           style={style.tinyLogo}
-          source={{
-            uri: "https://reactnative.dev/img/tiny_logo.png",
-          }}
+          source={advices.image}
         />
         <Text style={style.subHeader}>
-          Take a moment to sit in a quiet place.
+          {advices.adviceShort}
         </Text>
         <View style={style.modalView}>
           <Text style={style.modalDescription}>
-            Schedule a time to sit undisturbed by devices to reflect on and define your priorties.
+            {advices.adviceLong}
           </Text>
         </View>
         <Button style={style.modalButton}>
