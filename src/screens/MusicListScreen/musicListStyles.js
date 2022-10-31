@@ -1,13 +1,15 @@
-import { StyleSheet, Platform, StatusBar } from "react-native";
+import { StyleSheet, Platform, Dimensions } from "react-native";
 import { useTheme } from "@rneui/themed";
 import { globalStyles } from "../globalStyles";
 const styles = () => {
   const { theme } = useTheme();
+  const windowWidth = Dimensions.get("window").width;
+  const windowHeight = Dimensions.get("window").height;
   return StyleSheet.create({
     mainContainer: {
       flex: 1,
       backgroundColor: theme.colors.background,
-      paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+      height: windowHeight,
     },
     contentContainer: {
       paddingBottom: 20,
@@ -17,6 +19,13 @@ const styles = () => {
       fontSize: globalStyles.fontSet.title1,
       color: theme.colors.primary,
     },
+    musicHeader: {
+      padding: 20,
+      textAlign: "center",
+      fontSize: globalStyles.fontSet.title1,
+      color: theme.colors.primary,
+      fontWeight: "300",
+    },
     listContainer: {
       marginTop: 20,
       backgroundColor: theme.colors.cardColor,
@@ -24,13 +33,25 @@ const styles = () => {
       padding: 10,
       marginHorizontal: 20,
     },
-    textInputContainer: {
-      backgroundColor: theme.colors.background,
-      height:40,
-      borderRadius:10
+    searchbarContainer: {
+      backgroundColor: "transparent",
+      borderTopColor: "transparent",
+      borderBottomColor: "transparent",
     },
-    cardHeight:{
-      width : 60
+    textInput: {
+      color: theme.colors.black,
+    },
+    textInputContainer: {
+      backgroundColor:
+        Platform.OS == "ios"
+          ? theme.colors.greyOutline
+          : theme.colors.background,
+      height: 40,
+      borderRadius: 10,
+      elevation: 1,
+    },
+    cardHeight: {
+      width: 60,
     },
 
     backgroundShadow: {
