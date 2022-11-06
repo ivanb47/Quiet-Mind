@@ -30,22 +30,13 @@ const ModalComponent = (props) => {
           <Text>X</Text>
         </TouchableOpacity>
 
-        <Text style={style.header}>{advice.title}</Text>
-        <Image
-          style={style.tinyLogo}
-          source={advice.image}
-        />
-        <Text style={style.subHeader}>
-          {advice.advicehort}
-        </Text>
+        <Text style={style.header}>{advice?.title}</Text>
+        <Image style={style.tinyLogo} source={advice?.image} />
+        <Text style={style.subHeader}>{advice?.advicehort}</Text>
         <View style={style.modalView}>
-          <Text style={style.modalDescription}>
-            {advice.adviceLong}
-          </Text>
+          <Text style={style.modalDescription}>{advice?.adviceLong}</Text>
         </View>
-        <Button style={style.modalButton}>
-          see more
-        </Button>
+        <Button style={style.modalButton}>see more</Button>
       </View>
     </Modal>
   );
