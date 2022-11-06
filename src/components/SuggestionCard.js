@@ -10,8 +10,7 @@ import {
 import ModalComponent from "./ModalComponent"
 import React, { useState } from "react";
 import style from "./styles";
-
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const SuggestionCard = ({ item ,onPress}) => {
   const { title, adviceShort, image, type } = item.item;
@@ -25,7 +24,7 @@ const SuggestionCard = ({ item ,onPress}) => {
       <View style={styles.textContainer}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.description}>{adviceShort}</Text>
-        <FontAwesomeIcon icon={image} />
+        <MaterialCommunityIcons name={image} size={42} />
       </View>
       
      
