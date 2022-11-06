@@ -31,7 +31,7 @@ const Home = (props) => {
   const homeStyles = styles();
   const [showModal, setShowModal] = useState(false);
   const windowWidth = Dimensions.get("window").width;
-  const [adviceItem, setAdviceItem] = useState();
+  const [adviceItem, setAdviceItem] = useState(advices[0]);
   // sound related
 
   const [sound, setSound] = React.useState();
@@ -96,30 +96,6 @@ const Home = (props) => {
           });
     });
   }, []);
-
-  const items = [
-    {
-      id: 1,
-      title: "Title",
-      description: "Description",
-      image: require("../../assets/images/Placeholder.png"),
-      type: "type",
-    },
-    {
-      id: 2,
-      title: "Title",
-      description: "Description",
-      image: require("../../assets/images/Placeholder.png"),
-      type: "type",
-    },
-    {
-      id: 3,
-      title: "Title",
-      description: "Description",
-      image: require("../../assets/images/quote.png"),
-      type: "type",
-    },
-  ];
 
   const Exercise = [
     {

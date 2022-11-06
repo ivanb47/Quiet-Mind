@@ -15,7 +15,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { SearchBar } from "@rneui/themed";
 import SuggestionCard from "../../components/SuggestionCard";
 import ModalComponent from "../../components/ModalComponent";
-
+import advices from "../../Data/advices";
 const CardsList = () => {
   const { theme } = useTheme();
   const cardStyle = styles();
@@ -26,57 +26,7 @@ const CardsList = () => {
   const updateSearch = (search) => {
     setSearch(search);
   };
-  const items = [
-    {
-      id: 1,
-      title: "Breathing",
-      description: "Lorem Ipsum is simply dummy text of the",
-      image: require("../../assets/images/run.png"),
-      type: "type",
-    },
-    {
-      id: 2,
-      title: "Meditation",
-      description: "Lorem Ipsum is simply dummy text of the.",
-      image: require("../../assets/images/run.png"),
-      type: "type",
-    },
-    {
-      id: 3,
-      title: "Yoga",
-      description: "Lorem Ipsum is simply dummy text of the.",
-      image: require("../../assets/images/run.png"),
-      type: "type",
-    },
-    {
-      id: 4,
-      title: "Swimming",
-      description: "Lorem Ipsum is simply dummy text of the.",
-      image: require("../../assets/images/run.png"),
-      type: "type",
-    },
-    {
-      id: 5,
-      title: "Boxing",
-      description: "Lorem Ipsum is simply dummy text of the",
-      image: require("../../assets/images/run.png"),
-      type: "type",
-    },
-    {
-      id: 6,
-      title: "Cycling",
-      description: "Lorem Ipsum is simply dummy text of the",
-      image: require("../../assets/images/run.png"),
-      type: "type",
-    },
-    {
-      id: 7,
-      title: "Jogging or running",
-      description: "Lorem Ipsum is simply dummy text of the.",
-      image: require("../../assets/images/run.png"),
-      type: "type",
-    },
-  ];
+
 
   return (
     <SafeAreaView style={cardStyle.mainContainer}>
@@ -89,7 +39,7 @@ const CardsList = () => {
         ]}
       >
         <FlatList
-          data={items}
+          data={advices}
           ListHeaderComponent={() => (
             <SearchBar
               placeholder="Type Here..."
