@@ -74,6 +74,9 @@ const styles = () => {
       height: 60,
       borderRadius: 50,
     },
+    icon: {
+      marginRight: 10,
+    },
     itemCardRow: {
       opacity: 0.9,
       marginTop: 20,
@@ -113,7 +116,7 @@ const styles = () => {
       paddingTop: 5,
     },
     textContainer: {
-      height: "100%",
+      flex: 1,
     },
     showAllContainer: {
       textAlign: "center",
@@ -129,7 +132,7 @@ const styles = () => {
       marginBottom: 10,
     },
     backgroundShadow: {
-      //   shadowColor: theme.colors.grey0,
+      shadowColor: theme.colors.grey0,
       shadowOffset: {
         width: 2,
         height: 2,
@@ -139,12 +142,14 @@ const styles = () => {
       elevation: 5,
     },
     tinyLogo: {
-      width: 100,
-      height: 100,
-      margin: 20,
+      width: 120,
+      height: 120,
       alignSelf: "center",
-      backgroundColor: theme.colors.white,
-      borderRadius: 50,
+      alignItems: "center",
+      backgroundColor: theme.colors.divider,
+      textAlign: "center",
+      justifyContent: "center",
+      borderRadius: 60,
     },
     header: {
       textAlign: "center",

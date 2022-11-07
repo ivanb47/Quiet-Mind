@@ -22,11 +22,11 @@ const CardsList = () => {
   const windowWidth = Dimensions.get("window").width;
   const [search, setSearch] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [adviceItem, setAdviceItem] = useState(advices[0]);
 
   const updateSearch = (search) => {
     setSearch(search);
   };
-
 
   return (
     <SafeAreaView style={cardStyle.mainContainer}>
@@ -60,6 +60,7 @@ const CardsList = () => {
               style={cardStyle}
               item={item}
               onPress={() => {
+                setAdviceItem(item.item);
                 console.log("pressed");
                 setShowModal(true);
               }}
@@ -68,8 +69,13 @@ const CardsList = () => {
           contentContainerStyle={{ paddingBottom: 20 }}
         />
       </LinearGradient>
-      {<ModalComponent isVisible={showModal} hideModal = {()=>setShowModal(false)}/>}
-
+      {
+        <ModalComponent
+          isVisible={showModal}
+          advice={adviceItem}
+          hideModal={() => setShowModal(false)}
+        />
+      }
     </SafeAreaView>
   );
 };
