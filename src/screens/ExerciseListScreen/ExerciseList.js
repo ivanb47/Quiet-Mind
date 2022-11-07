@@ -85,6 +85,14 @@ const ExerciseList = () => {
       image: require("../../assets/images/Meditation_exe.png"),
       type: "type",
     },
+    {
+      id: 8,
+      title: "Laughing",
+      description:
+        "Laughter makes you feel good. And this positive feeling remains with you even after the laughter subsides. Humor helps you keep a positive, optimistic outlook through difficult situations, disappointments, and loss.",
+      image: require("../../assets/images/Laughing_exe.png"),
+      type: "type",
+    },
   ];
 
   const headerComponent = useMemo(() => {

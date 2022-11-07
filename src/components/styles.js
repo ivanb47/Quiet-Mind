@@ -101,9 +101,11 @@ const styles = () => {
       alignItems: "center",
     },
     itemCardImage: {
-      width: 250,
-      height: 130,
+      width: 180,
+      height: 180,
       borderRadius: 8,
+      resizeMode: "contain",
+      backgroundColor: theme.colors.grey5,
     },
     title: {
       fontSize: globalStyles.fontSet.title3,
