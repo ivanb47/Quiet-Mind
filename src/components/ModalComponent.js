@@ -3,6 +3,8 @@ import React from "react";
 import { ThemeProvider, useTheme } from "@rneui/themed";
 import styles from "./styles";
 import { Button } from "@rneui/base";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 const ModalComponent = (props) => {
   const { isVisible, advice } = props;
   const { theme } = useTheme();
@@ -31,7 +33,10 @@ const ModalComponent = (props) => {
         </TouchableOpacity>
 
         <Text style={style.header}>{advice?.title}</Text>
-        <Image style={style.tinyLogo} source={advice?.image} />
+        <View style={[style.tinyLogo, style.backgroundShadow]}>
+          <MaterialCommunityIcons name={advice?.image} size={80} />
+        </View>
+
         <Text style={style.subHeader}>{advice?.advicehort}</Text>
         <View style={style.modalView}>
           <Text style={style.modalDescription}>{advice?.adviceLong}</Text>
