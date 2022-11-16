@@ -32,13 +32,29 @@ const styles = () => {
       height: 45,
       marginBottom: 20,
     },
-
+    // DescriptionInputView: {
+    //   backgroundColor: theme.colors.grey5,
+    //   borderRadius: 10,
+    //   width: "70%",
+    //   height: 100,
+    //   marginBottom: 10,
+    // },
+    // DescriptionTextInput: {
+    //   height: 50,
+    //   flex: 1,
+    //   alignSelf: "flex-start",
+    //   padding: 10,
+    //   marginTop: 10,
+    //   marginLeft: 10,
+    // },
     TextInput: {
       height: 50,
       flex: 1,
+      alignSelf: "flex-start",
       padding: 10,
-      marginLeft: 20,
+      marginLeft: 10,
     },
+
     loginBtn: {
       width: "70%",
       borderRadius: 10,

@@ -6,7 +6,8 @@ import { Button } from "@rneui/base";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const ModalComponent = (props) => {
-  const { isVisible, advice } = props;
+  const { isVisible,onClose, advice } = props;
+
   const { theme } = useTheme();
   const homeStyles = styles();
   const style = styles();
@@ -18,10 +19,8 @@ const ModalComponent = (props) => {
       visible={isVisible}
       transparent={true}
       onDismiss={props.hideModal}
-      onRequestClose={() => {
-        Alert.alert("Modal has been closed.");
-        props.hideModal();
-      }}
+      onBackdropPress={props.hideModal}
+      onRequestClose={props.hideModal}
     >
       <View style={[style.modal, style.backgroundShadow]}>
         <TouchableOpacity

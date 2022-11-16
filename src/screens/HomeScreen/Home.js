@@ -20,6 +20,7 @@ import { QuoteAPI } from "../../networkCode/QuoteAPI";
 import { useLinkProps } from "@react-navigation/native";
 import { Audio } from "expo-av";
 import ModalComponent from "../../components/ModalComponent";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Exercise from "../../Data/Exercise";
 
@@ -145,7 +146,20 @@ const Home = (props) => {
             quote={quoteAPI?.quote}
             quoteBy={quoteAPI?.quoteBy}
           />
-
+          <View
+            style={[homeStyles.suggestionCardRow, homeStyles.backgroundShadow]}
+            onPress={() => {
+              print("hiii");
+            }}
+          >
+            <View style={homeStyles.textContainer}>
+              <Text style={homeStyles.title}>Feeling bored?</Text>
+              <Text style={homeStyles.description}>
+                Click to get some suggestion to overcome your boredom
+              </Text>
+            </View>
+            <MaterialCommunityIcons name="emoticon-happy-outline" size={50} />
+          </View>
           <Text style={homeStyles.titleText}>Advices</Text>
           <FlatList
             data={advices}

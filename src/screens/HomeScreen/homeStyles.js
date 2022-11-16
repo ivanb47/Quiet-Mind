@@ -1,8 +1,9 @@
-import { StyleSheet, Platform, StatusBar } from "react-native";
+import { StyleSheet, Platform, StatusBar, Dimensions } from "react-native";
 import { useTheme } from "@rneui/themed";
 import { globalStyles } from "../globalStyles";
 const styles = () => {
   const { theme } = useTheme();
+  const windowWidth = Dimensions.get("window").width;
   return StyleSheet.create({
     mainContainer: {
       flex: 1,
@@ -29,9 +30,40 @@ const styles = () => {
       flexDirection: "row",
       width: "100%",
     },
+    suggestionCardRow: {
+      opacity: 0.9,
+      marginTop: 20,
+      marginBottom: 20,
+      width: windowWidth - 40,
+      backgroundColor: "#FFE1E1",
+      borderRadius: 15,
+      padding: 15,
+      marginHorizontal: 20,
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+    },
+    suggestionImage: {
+      width: 60,
+      height: 60,
+      borderRadius: 50,
+    },
+    description: {
+      fontSize: globalStyles.fontSet.subhead,
+      color: theme.colors.grey3,
+      paddingTop: 5,
+    },
+    title: {
+      fontSize: globalStyles.fontSet.title3,
+      color: theme.colors.black,
+      fontWeight: "bold",
+    },
     quoteImage: {
       width: 16,
       height: 15,
+    },
+    textContainer: {
+      flex: 1,
     },
     quoteText: {
       fontSize: globalStyles.fontSet.title3,
