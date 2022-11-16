@@ -1,9 +1,10 @@
-import { Modal, TouchableOpacity, Text, View, Image } from "react-native";
+import { TouchableOpacity, Text, View, Image } from "react-native";
 import React from "react";
 import { ThemeProvider, useTheme } from "@rneui/themed";
 import styles from "./styles";
 import { Button } from "@rneui/base";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Modal from 'react-native-modal'
 
 const ModalComponent = (props) => {
   const { isVisible,onClose, advice } = props;
@@ -18,6 +19,7 @@ const ModalComponent = (props) => {
       animationType="fade"
       visible={isVisible}
       transparent={true}
+      // style={style.backgroundContainer}
       onDismiss={props.hideModal}
       onBackdropPress={props.hideModal}
       onRequestClose={props.hideModal}

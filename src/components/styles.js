@@ -25,12 +25,12 @@ const styles = () => {
       backgroundColor: theme.colors.white,
     },
     modal: {
-      flex: 1,
+      // flex: 1,
       backgroundColor: theme.colors.white,
       borderRadius: 15,
       alignSelf: "center",
       justifyContent: "center",
-      width: "80%",
+      width: "90%",
       height: "70%",
     },
     quoteTextContainer: {
@@ -132,6 +132,9 @@ const styles = () => {
       width: 80,
       height: 20,
       marginBottom: 10,
+    },
+    backgroundContainer:{
+      backgroundColor: theme.colors.modalBG
     },
     backgroundShadow: {
       shadowColor: theme.colors.grey0,
