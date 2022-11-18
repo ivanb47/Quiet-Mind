@@ -1,12 +1,14 @@
-import { Modal, TouchableOpacity, Text, View, Image } from "react-native";
+import { TouchableOpacity, Text, View, Image } from "react-native";
 import React from "react";
 import { ThemeProvider, useTheme } from "@rneui/themed";
 import styles from "./styles";
 import { Button } from "@rneui/base";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Modal from "react-native-modal";
 
 const ModalComponent = (props) => {
-  const { isVisible, advice } = props;
+  const { isVisible, onClose, advice } = props;
+
   const { theme } = useTheme();
   const homeStyles = styles();
   const style = styles();
@@ -17,11 +19,10 @@ const ModalComponent = (props) => {
       animationType="fade"
       visible={isVisible}
       transparent={true}
+      // style={style.backgroundContainer}
       onDismiss={props.hideModal}
-      onRequestClose={() => {
-        Alert.alert("Modal has been closed.");
-        props.hideModal();
-      }}
+      onBackdropPress={props.hideModal}
+      onRequestClose={props.hideModal}
     >
       <View style={[style.modal, style.backgroundShadow]}>
         <TouchableOpacity
@@ -41,7 +42,8 @@ const ModalComponent = (props) => {
         <View style={style.modalView}>
           <Text style={style.modalDescription}>{advice?.adviceLong}</Text>
         </View>
-        <Button style={style.modalButton}>see more</Button>
+
+        <Button buttonStyle={style.modalButton}>see more</Button>
       </View>
     </Modal>
   );

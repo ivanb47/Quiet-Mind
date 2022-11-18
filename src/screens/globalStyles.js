@@ -15,7 +15,9 @@ export const theme = createTheme({
     cardColor: "#fff",
     bgGradientStart: "#e8f7ff",
     bgGradientEnd: "#ffe8f0",
-    modalDescription:"#C3F8FF"
+    modalDescription: "#C3F8FF",
+    modalButton: "#00ABB3",
+    modalBG: "rgba(38,42,56,0.2)",
   },
   darkColors: {
     ...darkColors,
@@ -26,7 +28,8 @@ export const theme = createTheme({
     cardColor: "#1c1c1c",
     bgGradientStart: "#040f14",
     bgGradientEnd: "#211015",
-    modalBottom:"#00ABB3"
+    modalButton: "#00ABB3",
+    modalBG: "rgba(38,42,56,0.2)",
   },
 });
 

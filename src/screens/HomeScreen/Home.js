@@ -6,6 +6,7 @@ import {
   FlatList,
   Image,
   View,
+  TouchableOpacity,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import QuoteBox from "../../components/QuoteBox";
@@ -20,8 +21,7 @@ import { QuoteAPI } from "../../networkCode/QuoteAPI";
 import { useLinkProps } from "@react-navigation/native";
 import { Audio } from "expo-av";
 import ModalComponent from "../../components/ModalComponent";
-
-import Exercise from "../../Data/Exercise";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import advices from "../../Data/advices";
 import songs from "../../Data/songs";
@@ -145,7 +145,23 @@ const Home = (props) => {
             quote={quoteAPI?.quote}
             quoteBy={quoteAPI?.quoteBy}
           />
-
+          <TouchableOpacity
+            style={[homeStyles.suggestionCardRow, homeStyles.backgroundShadow]}
+          >
+            <View style={homeStyles.textContainer}>
+              <Text style={homeStyles.title}>Feeling bored?</Text>
+              <Text
+                style={[homeStyles.description, { color: theme.colors.white }]}
+              >
+                Click to get some suggestion to overcome your boredom
+              </Text>
+            </View>
+            <MaterialCommunityIcons
+              name="emoticon-happy-outline"
+              style={{ opacity: 0.2 }}
+              size={60}
+            />
+          </TouchableOpacity>
           <Text style={homeStyles.titleText}>Advices</Text>
           <FlatList
             data={advices}

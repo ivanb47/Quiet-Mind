@@ -3,19 +3,21 @@ import React, { useState } from "react";
 import {
   Text,
   View,
+  KeyboardAvoidingView,
   Image,
   TextInput,
   Keyboard,
-  KeyboardAvoidingView,
-  TouchableWithoutFeedback,
   TouchableOpacity,
+  TouchableWithoutFeedback,
 } from "react-native";
-import Loginstyle from "./loginStyles";
+import SignUpStyle from "./signupStyles";
 
-const Login = () => {
+const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const styles = Loginstyle();
+  const [description, setDescription] = useState("");
+  const [fullName, setFullName] = useState("");
+  const styles = SignUpStyle();
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -32,27 +34,35 @@ const Login = () => {
 
           <TextInput
             style={styles.inputView}
-            placeholder="Email."
+            placeholder="Full Name"
+            placeholderTextColor="#808080"
+            onChangeText={(email) => setFullName(fullName)}
+          />
+
+          <TextInput
+            style={styles.inputView}
+            keyboardType="email-address"
+            placeholder="Email"
             placeholderTextColor="#808080"
             onChangeText={(email) => setEmail(email)}
           />
 
           <TextInput
             style={styles.inputView}
-            placeholder="Password."
+            placeholder="Password"
             placeholderTextColor="#808080"
             secureTextEntry={true}
             onChangeText={(password) => setPassword(password)}
           />
 
           <TouchableOpacity style={styles.loginBtn}>
-            <Text style={styles.loginText}>Login</Text>
+            <Text style={styles.loginText}>Sign Up</Text>
           </TouchableOpacity>
           <View style={styles.account}>
             <TouchableOpacity>
               <Text>
-                Don't have an account?
-                <Text style={styles.sign_up}> Sign Up</Text>
+                Already have an account?
+                <Text style={styles.sign_up}> Sign In</Text>
               </Text>
             </TouchableOpacity>
           </View>
@@ -62,4 +72,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

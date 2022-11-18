@@ -25,13 +25,13 @@ const styles = () => {
       backgroundColor: theme.colors.white,
     },
     modal: {
-      flex: 1,
+      // flex: 1,
       backgroundColor: theme.colors.white,
       borderRadius: 15,
-      marginBottom: 200,
-      marginTop: 100,
-      marginStart: 20,
-      marginEnd: 20,
+      alignSelf: "center",
+      justifyContent: "center",
+      width: "90%",
+      height: "75%",
     },
     quoteTextContainer: {
       paddingTop: 10,
@@ -133,6 +133,9 @@ const styles = () => {
       height: 20,
       marginBottom: 10,
     },
+    backgroundContainer: {
+      backgroundColor: theme.colors.modalBG,
+    },
     backgroundShadow: {
       shadowColor: theme.colors.grey0,
       shadowOffset: {
@@ -169,6 +172,9 @@ const styles = () => {
     },
     modalButton: {
       backgroundColor: theme.colors.modalButton,
+      borderBottomEndRadius: 15,
+      borderBottomStartRadius: 15,
+      padding: 10,
     },
     modalView: {
       backgroundColor: theme.colors.modalDescription,
