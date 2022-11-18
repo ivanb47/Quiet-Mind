@@ -3,10 +3,12 @@ import React, { useState } from "react";
 import {
   Text,
   View,
+  KeyboardAvoidingView,
   Image,
   TextInput,
-  Button,
+  Keyboard,
   TouchableOpacity,
+  TouchableWithoutFeedback,
 } from "react-native";
 import SignUpStyle from "./signupStyles";
 
@@ -17,58 +19,56 @@ const SignUp = () => {
   const [fullName, setFullName] = useState("");
   const styles = SignUpStyle();
   return (
-    <View style={styles.container}>
-      <Image style={styles.quoteImage} source={require("../../assets/images/Yoga_exe.png")} />
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={{ flex: 1 }}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          <Image
+            style={styles.quoteImage}
+            source={require("../../assets/images/Yoga_exe.png")}
+          />
 
-      <StatusBar style="auto" />
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Full Name"
-          placeholderTextColor="#808080"
-          onChangeText={(email) => setFullName(fullName)}
-        />
-      </View>
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Email"
-          placeholderTextColor="#808080"
-          onChangeText={(email) => setEmail(email)}
-        />
-      </View>
-      {/* <View style={styles.DescriptionInputView}>
-        <TextInput
-          style={styles.DescriptionTextInput}
-          placeholder="Describe why you want to be volunteer"
-          placeholderTextColor="#808080"
-          multiline true
-          onChangeText={(email) => setDescription(description)}
-        />
-      </View> */}
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Password"
-          placeholderTextColor="#808080"
-          secureTextEntry={true}
-          onChangeText={(password) => setPassword(password)}
-        />
-      </View>
-     
-      <TouchableOpacity style={styles.loginBtn}>
-        <Text style={styles.loginText}>Sign Up</Text>
-      </TouchableOpacity>
-      <View style={styles.account}>
-        <TouchableOpacity>
-          <Text>
-             Already have an account?
-            <Text style={styles.sign_up}> Sign In</Text>
-          </Text>
-        </TouchableOpacity>
-      </View>
-     
-    </View>
+          <StatusBar style="auto" />
+
+          <TextInput
+            style={styles.inputView}
+            placeholder="Full Name"
+            placeholderTextColor="#808080"
+            onChangeText={(email) => setFullName(fullName)}
+          />
+
+          <TextInput
+            style={styles.inputView}
+            keyboardType="email-address"
+            placeholder="Email"
+            placeholderTextColor="#808080"
+            onChangeText={(email) => setEmail(email)}
+          />
+
+          <TextInput
+            style={styles.inputView}
+            placeholder="Password"
+            placeholderTextColor="#808080"
+            secureTextEntry={true}
+            onChangeText={(password) => setPassword(password)}
+          />
+
+          <TouchableOpacity style={styles.loginBtn}>
+            <Text style={styles.loginText}>Sign Up</Text>
+          </TouchableOpacity>
+          <View style={styles.account}>
+            <TouchableOpacity>
+              <Text>
+                Already have an account?
+                <Text style={styles.sign_up}> Sign In</Text>
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 };
 

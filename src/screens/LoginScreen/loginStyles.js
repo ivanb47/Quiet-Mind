@@ -28,19 +28,14 @@ const styles = () => {
     inputView: {
       backgroundColor: theme.colors.grey5,
       borderRadius: 10,
-      width: "70%",
+      width: "80%",
       height: 45,
+      paddingHorizontal: 10,
       marginBottom: 20,
     },
 
-    TextInput: {
-      height: 50,
-      flex: 1,
-      padding: 10,
-      marginLeft: 20,
-    },
     loginBtn: {
-      width: "70%",
+      width: "80%",
       borderRadius: 10,
       height: 40,
       alignItems: "center",
