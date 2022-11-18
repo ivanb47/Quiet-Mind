@@ -31,7 +31,6 @@ const MusicList = () => {
   React.useEffect(() => {
     return sound
       ? () => {
-          console.log("Unloading Sound");
           sound.unloadAsync();
         }
       : undefined;
@@ -46,14 +45,12 @@ const MusicList = () => {
     await sound.playAsync();
   };
   const PauseAudio = async () => {
-    console.log("Pausing Audio", sound.pauseAsync());
     if (isPlaying === true) {
       await sound?.pauseAsync();
       setIsPlaying(false);
     }
   };
   const PlayPauseAudio = (item) => {
-    console.log("Playing Audio", item);
     if (playingSongIndex == null) {
       PlayAudio(item);
       return;
