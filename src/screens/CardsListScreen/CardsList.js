@@ -61,7 +61,6 @@ const CardsList = () => {
               item={item}
               onPress={() => {
                 setAdviceItem(item.item);
-                console.log("pressed");
                 setShowModal(true);
               }}
             />

@@ -5,6 +5,17 @@ const styles = () => {
   const { theme } = useTheme();
   const windowWidth = Dimensions.get("window").width;
   return StyleSheet.create({
+    suggestionModal: {
+      backgroundColor: theme.colors.cardColor,
+      borderRadius: 15,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    modalBG: {
+      margin: 0,
+      backgroundColor: theme.colors.modalBG,
+      padding: 20,
+    },
     quoteContainer: {
       marginVertical: 20,
       backgroundColor: theme.colors.cardColor,
@@ -163,6 +174,14 @@ const styles = () => {
       paddingHorizontal: 20,
       marginTop: 60,
       height: "20%",
+    },
+    suggestionHeader: {
+      fontSize: globalStyles.fontSet.title2,
+      fontWeight: "bold",
+      color: theme.colors.black,
+      textAlign: "center",
+      paddingHorizontal: 20,
+      paddingVertical: 40,
     },
     subHeader: {
       textAlign: "center",

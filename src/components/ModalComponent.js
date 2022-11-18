@@ -12,14 +12,13 @@ const ModalComponent = (props) => {
   const { theme } = useTheme();
   const homeStyles = styles();
   const style = styles();
-  console.log("Is visible:", advice);
 
   return (
     <Modal
       animationType="fade"
       visible={isVisible}
       transparent={true}
-      // style={style.backgroundContainer}
+      style={style.modalBG}
       onDismiss={props.hideModal}
       onBackdropPress={props.hideModal}
       onRequestClose={props.hideModal}

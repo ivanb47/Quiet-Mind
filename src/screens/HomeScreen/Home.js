@@ -17,10 +17,11 @@ import { ShowAllButton } from "../../components/ReusableComponents";
 import styles from "./homeStyles";
 import { ThemeProvider, useTheme } from "@rneui/themed";
 import { LinearGradient } from "expo-linear-gradient";
-import { QuoteAPI } from "../../networkCode/QuoteAPI";
+import { QuoteAPI, SuggestionAPI } from "../../networkCode/APIs";
 import { useLinkProps } from "@react-navigation/native";
 import { Audio } from "expo-av";
 import ModalComponent from "../../components/ModalComponent";
+import FeelingBoredModal from "../../components/FeelingBoredModal";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import advices from "../../Data/advices";
@@ -32,6 +33,8 @@ const Home = (props) => {
   const [showModal, setShowModal] = useState(false);
   const windowWidth = Dimensions.get("window").width;
   const [adviceItem, setAdviceItem] = useState(advices[0]);
+  const [suggestion, setSuggestion] = useState("Call your closest friend");
+  const [showFeelingBoredModal, setShowFeelingBoredModal] = useState(false);
   // sound related
 
   const [sound, setSound] = React.useState();
@@ -41,7 +44,6 @@ const Home = (props) => {
   React.useEffect(() => {
     return sound
       ? () => {
-          console.log("Unloading Sound");
           sound.unloadAsync();
         }
       : undefined;
@@ -61,14 +63,12 @@ const Home = (props) => {
     await sound.playAsync();
   };
   const PauseAudio = async () => {
-    console.log("Pausing Audio", sound.pauseAsync());
     if (isPlaying === true) {
       await sound?.pauseAsync();
       setIsPlaying(false);
     }
   };
   const PlayPauseAudio = (item) => {
-    console.log("Playing Audio", item);
     if (playingSongIndex == null) {
       PlayAudio(item);
       return;
@@ -87,7 +87,6 @@ const Home = (props) => {
   };
   useEffect(() => {
     QuoteAPI().then((res) => {
-      console.log("Result: ", res);
       res.status
         ? setQuoteAPI(res)
         : setQuoteAPI({
@@ -118,6 +117,18 @@ const Home = (props) => {
     },
   ];
 
+  const fetchSuggestion = () => {
+    SuggestionAPI()
+      .then((res) => {
+        console.log("Result: ", res);
+        res.status
+          ? setSuggestion(res.suggestion)
+          : setSuggestion("Error fetching suggestion");
+      })
+      .then(() => {
+        setShowFeelingBoredModal(true);
+      });
+  };
   return (
     <SafeAreaView style={homeStyles.mainContainer}>
       <LinearGradient
@@ -147,11 +158,14 @@ const Home = (props) => {
           />
           <TouchableOpacity
             style={[homeStyles.suggestionCardRow, homeStyles.backgroundShadow]}
+            onPress={() => {
+              fetchSuggestion();
+            }}
           >
             <View style={homeStyles.textContainer}>
               <Text style={homeStyles.title}>Feeling bored?</Text>
               <Text
-                style={[homeStyles.description, { color: theme.colors.white }]}
+                style={[homeStyles.description, { color: theme.colors.grey2 }]}
               >
                 Click to get some suggestion to overcome your boredom
               </Text>
@@ -176,7 +190,6 @@ const Home = (props) => {
                 style={homeStyles}
                 item={item}
                 onPress={() => {
-                  console.log("pressed");
                   setAdviceItem(item.item);
                   setShowModal(true);
                 }}
@@ -252,13 +265,17 @@ const Home = (props) => {
           />
         </ScrollView>
       </LinearGradient>
-      {
-        <ModalComponent
-          isVisible={showModal}
-          advice={adviceItem}
-          hideModal={() => setShowModal(false)}
-        />
-      }
+
+      <ModalComponent
+        isVisible={showModal}
+        advice={adviceItem}
+        hideModal={() => setShowModal(false)}
+      />
+      <FeelingBoredModal
+        isVisible={showFeelingBoredModal}
+        suggestion={suggestion}
+        hideModal={() => setShowFeelingBoredModal(false)}
+      />
     </SafeAreaView>
   );
 };

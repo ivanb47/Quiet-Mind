@@ -17,7 +17,7 @@ export const theme = createTheme({
     bgGradientEnd: "#ffe8f0",
     modalDescription: "#C3F8FF",
     modalButton: "#00ABB3",
-    modalBG: "rgba(38,42,56,0.2)",
+    modalBG: "rgba(38,42,56,0.8)",
   },
   darkColors: {
     ...darkColors,
@@ -29,7 +29,7 @@ export const theme = createTheme({
     bgGradientStart: "#040f14",
     bgGradientEnd: "#211015",
     modalButton: "#00ABB3",
-    modalBG: "rgba(38,42,56,0.2)",
+    modalBG: "rgba(38,42,56,0.8)",
   },
 });
 
