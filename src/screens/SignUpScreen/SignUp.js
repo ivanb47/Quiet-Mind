@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import SignUpStyle from "./signupStyles";
 
-const SignUp = () => {
+const SignUp = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [description, setDescription] = useState("");
@@ -26,8 +26,8 @@ const SignUp = () => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
           <Image
-            style={styles.quoteImage}
-            source={require("../../assets/images/Yoga_exe.png")}
+            style={styles.logoStyle}
+            source={require("../../assets/Logos/Quiet_mind-clr1.png")}
           />
 
           <StatusBar style="auto" />
@@ -59,12 +59,18 @@ const SignUp = () => {
             <Text style={styles.loginText}>Sign Up</Text>
           </TouchableOpacity>
           <View style={styles.account}>
-            <TouchableOpacity>
-              <Text>
-                Already have an account?
-                <Text style={styles.sign_up}> Sign In</Text>
+            <Text>
+              Already have an account?
+              <Text
+                style={styles.sign_up}
+                onPress={() => {
+                  props.navigation.navigate("LoginScreen");
+                }}
+              >
+                {" "}
+                Sign In
               </Text>
-            </TouchableOpacity>
+            </Text>
           </View>
         </View>
       </TouchableWithoutFeedback>
