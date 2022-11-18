@@ -141,14 +141,10 @@ const Home = (props) => {
       >
         <ScrollView style={homeStyles.contentContainer}>
           <View>
-            <Text
-              style={[
-                homeStyles.titleText,
-                { textAlign: "center", paddingVertical: 20 },
-              ]}
-            >
-              LOGO
-            </Text>
+            <Image
+              source={require("../../assets/Logos/Quiet_mind-blk-1.png")}
+              style={homeStyles.logo}
+            />
           </View>
           <Text style={homeStyles.titleText}>Quote of the day</Text>
           <QuoteBox

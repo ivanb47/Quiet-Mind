@@ -5,7 +5,7 @@ const styles = () => {
   const { theme } = useTheme();
   return StyleSheet.create({
     mainContainer: {
-      flex:1,
+      flex: 1,
       backgroundColor: theme.colors.background,
       paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },
@@ -14,6 +14,12 @@ const styles = () => {
       paddingTop: 20,
       fontSize: globalStyles.fontSet.title1,
       color: theme.colors.primary,
+    },
+    logo: {
+      width: 180,
+      alignSelf: "center",
+      height: 180,
+      marginBottom: 10,
     },
     subTitleText: {
       fontSize: globalStyles.fontSet.title3,
