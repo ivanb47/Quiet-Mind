@@ -31,7 +31,7 @@ const styles = () => {
       alignSelf: "center",
       justifyContent: "center",
       width: "90%",
-      height: "70%",
+      height: "75%",
     },
     quoteTextContainer: {
       paddingTop: 10,
@@ -133,8 +133,8 @@ const styles = () => {
       height: 20,
       marginBottom: 10,
     },
-    backgroundContainer:{
-      backgroundColor: theme.colors.modalBG
+    backgroundContainer: {
+      backgroundColor: theme.colors.modalBG,
     },
     backgroundShadow: {
       shadowColor: theme.colors.grey0,
@@ -172,6 +172,9 @@ const styles = () => {
     },
     modalButton: {
       backgroundColor: theme.colors.modalButton,
+      borderBottomEndRadius: 15,
+      borderBottomStartRadius: 15,
+      padding: 10,
     },
     modalView: {
       backgroundColor: theme.colors.modalDescription,

@@ -4,10 +4,10 @@ import { ThemeProvider, useTheme } from "@rneui/themed";
 import styles from "./styles";
 import { Button } from "@rneui/base";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import Modal from 'react-native-modal'
+import Modal from "react-native-modal";
 
 const ModalComponent = (props) => {
-  const { isVisible,onClose, advice } = props;
+  const { isVisible, onClose, advice } = props;
 
   const { theme } = useTheme();
   const homeStyles = styles();
@@ -42,7 +42,8 @@ const ModalComponent = (props) => {
         <View style={style.modalView}>
           <Text style={style.modalDescription}>{advice?.adviceLong}</Text>
         </View>
-        <Button style={style.modalButton}>see more</Button>
+
+        <Button buttonStyle={style.modalButton}>see more</Button>
       </View>
     </Modal>
   );

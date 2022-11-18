@@ -35,7 +35,7 @@ const styles = () => {
       marginTop: 20,
       marginBottom: 20,
       width: windowWidth - 40,
-      backgroundColor: "#FFE1E1",
+      backgroundColor: theme.colors.grey4,
       borderRadius: 15,
       padding: 15,
       marginHorizontal: 20,
@@ -81,7 +81,7 @@ const styles = () => {
       paddingHorizontal: 10,
     },
     backgroundShadow: {
-      //   shadowColor: theme.colors.grey0,
+      shadowColor: theme.colors.grey0,
       shadowOffset: {
         width: 2,
         height: 2,
