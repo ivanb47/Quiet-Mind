@@ -43,6 +43,12 @@ const styles = () => {
       justifyContent: "space-between",
       alignItems: "center",
     },
+    logo: {
+      width: 175,
+      alignSelf: "center",
+      height: 38,
+      marginBottom: 10,
+    },
     suggestionImage: {
       width: 60,
       height: 60,
