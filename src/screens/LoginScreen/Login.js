@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import Loginstyle from "./loginStyles";
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const styles = Loginstyle();
@@ -24,22 +24,22 @@ const Login = () => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
           <Image
-            style={styles.quoteImage}
-            source={require("../../assets/images/Yoga_exe.png")}
+            style={styles.logoStyle}
+            source={require("../../assets/Logos/Quiet_mind-clr1.png")}
           />
 
           <StatusBar style="auto" />
 
           <TextInput
             style={styles.inputView}
-            placeholder="Email."
+            placeholder="Email"
             placeholderTextColor="#808080"
             onChangeText={(email) => setEmail(email)}
           />
 
           <TextInput
             style={styles.inputView}
-            placeholder="Password."
+            placeholder="Password"
             placeholderTextColor="#808080"
             secureTextEntry={true}
             onChangeText={(password) => setPassword(password)}
@@ -49,12 +49,18 @@ const Login = () => {
             <Text style={styles.loginText}>Login</Text>
           </TouchableOpacity>
           <View style={styles.account}>
-            <TouchableOpacity>
-              <Text>
-                Don't have an account?
-                <Text style={styles.sign_up}> Sign Up</Text>
+            <Text>
+              Don't have an account?
+              <Text
+                style={styles.sign_up}
+                onPress={() => {
+                  props.navigation.navigate("SignUpScreen");
+                }}
+              >
+                {" "}
+                Sign Up
               </Text>
-            </TouchableOpacity>
+            </Text>
           </View>
         </View>
       </TouchableWithoutFeedback>

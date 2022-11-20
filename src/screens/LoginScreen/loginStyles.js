@@ -15,6 +15,7 @@ const styles = () => {
     sign_up: {
       marginTop: 10,
       marginStart: 5,
+      fontWeight: "bold",
       color: "#0000FF",
     },
     account: {
@@ -24,6 +25,10 @@ const styles = () => {
       width: 100,
       height: 100,
       margin: 30,
+    },
+    logoStyle: {
+      width: 200,
+      height: 200,
     },
     inputView: {
       backgroundColor: theme.colors.grey5,
