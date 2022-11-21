@@ -8,6 +8,7 @@ import {
   View,
   TouchableOpacity,
 } from "react-native";
+import { AntDesign } from '@expo/vector-icons';
 import React, { useState, useEffect } from "react";
 import QuoteBox from "../../components/QuoteBox";
 import SuggestionCard from "../../components/SuggestionCard";
@@ -23,9 +24,13 @@ import { Audio } from "expo-av";
 import ModalComponent from "../../components/ModalComponent";
 import FeelingBoredModal from "../../components/FeelingBoredModal";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
+import excercises from "../../Data/excercise";
 import advices from "../../Data/advices";
 import songs from "../../Data/songs";
+import { BottomTabBarHeightCallbackContext } from "@react-navigation/bottom-tabs";
+
+
+
 const Home = (props) => {
   const [quoteAPI, setQuoteAPI] = useState();
   const { theme } = useTheme();
@@ -33,7 +38,9 @@ const Home = (props) => {
   const [showModal, setShowModal] = useState(false);
   const windowWidth = Dimensions.get("window").width;
   const [adviceItem, setAdviceItem] = useState(advices[0]);
+  const [excerciseItem, setExcerciseItem] = useState(excercises[0]);
   const [suggestion, setSuggestion] = useState("Call your closest friend");
+
   const [showFeelingBoredModal, setShowFeelingBoredModal] = useState(false);
   // sound related
 
@@ -96,26 +103,11 @@ const Home = (props) => {
     });
   }, []);
 
-  const Exercise = [
-    {
-      id: 1,
-      title: "Reading",
-      image: require("../../assets/images/Reading_exe.png"),
-      type: "type",
-    },
-    {
-      id: 2,
-      title: "Deep breathing",
-      image: require("../../assets/images/Breathing_exe.png"),
-      type: "type",
-    },
-    {
-      id: 3,
-      title: "Laughing",
-      image: require("../../assets/images/Laughing_exe.png"),
-      type: "type",
-    },
-  ];
+  const selectTop5Exe = () => {
+    return excercises.filter((item) => {
+      return item.id < 5 && item;
+    });
+  };
 
   const fetchSuggestion = () => {
     SuggestionAPI()
@@ -145,7 +137,16 @@ const Home = (props) => {
               style={homeStyles.logo}
             />
           </View>
-          <Text style={homeStyles.titleText}>Quote of the day</Text>
+
+          <Text style={homeStyles.titleText}>Quote of the day
+          <TouchableOpacity>
+          <AntDesign name="sharealt" 
+          style={homeStyles.shareIcon}
+          size={20} 
+          color="black" />
+        
+        </TouchableOpacity>   
+          </Text>
           <QuoteBox
             style={homeStyles}
             quote={quoteAPI?.quote}
@@ -206,27 +207,30 @@ const Home = (props) => {
           />
           <Text style={homeStyles.titleText}>Exercises</Text>
           <FlatList
-            data={Exercise}
+            data={selectTop5Exe()}
             horizontal={true}
             snapToAlignment={"center"}
             decelerationRate={"fast"}
             showsHorizontalScrollIndicator={false}
             keyExtractor={(item) => item.id}
-            renderItem={(item) => <ItemCard style={homeStyles} item={item} />}
+            renderItem={(item) => <ItemCard style={homeStyles} item={item} showDescription={false}/>}
             contentContainerStyle={{ paddingBottom: 20 }}
             ListFooterComponent={() => (
               <ShowAllButton
                 onPress={() => {
                   props.navigation.navigate("ExerciseList");
-                }}
+               }}
               />
+
             )}
+            
             ListFooterComponentStyle={{
               alignSelf: "center",
               marginTop: 20,
               marginRight: 20,
             }}
           />
+
           <Text style={homeStyles.titleText}>Musics</Text>
           <FlatList
             data={selectTop5Songs()}
