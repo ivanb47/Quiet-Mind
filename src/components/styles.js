@@ -70,11 +70,12 @@ const styles = () => {
     },
     suggestionCardRow: {
       opacity: 0.9,
-      marginTop:15,
+      marginTop: 20,
       width: windowWidth - 40,
       backgroundColor: theme.colors.cardColor,
       borderRadius: 15,
-      padding: 10,
+      paddingHorizontal: 15,
+      paddingVertical: 10,
       marginHorizontal: 20,
       flexDirection: "row",
       justifyContent: "space-between",
@@ -130,11 +131,6 @@ const styles = () => {
     },
     textContainer: {
       flex: 1,
-      marginTop: 0,
-      marginBottom: 0,
-    },
-    likeIcon:{
-      marginTop: 5,
     },
     showAllContainer: {
       textAlign: "center",
