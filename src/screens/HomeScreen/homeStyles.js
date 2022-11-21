@@ -1,6 +1,11 @@
 import { StyleSheet, Platform, StatusBar, Dimensions } from "react-native";
 import { useTheme } from "@rneui/themed";
 import { globalStyles } from "../globalStyles";
+
+
+
+
+
 const styles = () => {
   const { theme } = useTheme();
   const windowWidth = Dimensions.get("window").width;
@@ -17,6 +22,13 @@ const styles = () => {
       paddingLeft: 20,
       fontSize: globalStyles.fontSet.title1,
       color: theme.colors.primary,
+      justifyContent: "space-between",
+      
+    },
+    shareIcon:{
+      marginLeft: 140,
+      fontSize: globalStyles.fontSet.title1,
+      color: theme.colors.primary,
     },
     quoteContainer: {
       marginTop: 20,
@@ -29,6 +41,7 @@ const styles = () => {
       paddingTop: 10,
       flexDirection: "row",
       width: "100%",
+
     },
     suggestionCardRow: {
       opacity: 0.9,
