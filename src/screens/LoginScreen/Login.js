@@ -11,9 +11,11 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Loginstyle from "./loginStyles";
+import { signIn } from "../../firebase/firebaseCalls";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
+  const [loader, setLoader] = useState(false);
   const [password, setPassword] = useState("");
   const styles = Loginstyle();
   return (
@@ -45,8 +47,15 @@ const Login = (props) => {
             onChangeText={(password) => setPassword(password)}
           />
 
-          <TouchableOpacity style={styles.loginBtn}>
-            <Text style={styles.loginText}>Login</Text>
+          <TouchableOpacity
+            onPress={() => signIn(email, password, setLoader)}
+            style={styles.loginBtn}
+          >
+            {!loader ? (
+              <Text style={styles.loginText}>Login</Text>
+            ) : (
+              <ActivityIndicator size={"small"} />
+            )}
           </TouchableOpacity>
           <View style={styles.account}>
             <Text>

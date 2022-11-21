@@ -10,8 +10,8 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import styles from "./settingsStyles";
-import { ThemeProvider, useTheme } from "@rneui/themed";
-import advices from "../../Data/advices";
+import { ThemeProvider, useTheme, Button } from "@rneui/themed";
+import { signOutUser } from "../../firebase/firebaseCalls";
 
 const Settings = () => {
   const { theme } = useTheme();
@@ -63,14 +63,22 @@ const Settings = () => {
             </TouchableOpacity>
 
             {/* Currently we are not authenticating users so currently we don't need logout button */}
-            {/* <Text
-              style={[
-                settingsStyles.subTitleText,
-                { textAlign: "center", paddingVertical: 20, marginTop: 150 },
-              ]}
-            >
-              Logout
-            </Text> */}
+            <Button
+              containerStyle={{
+                textAlign: "center",
+                position: "absolute",
+                marginHorizontal: 20,
+                borderRadius: 10,
+                bottom: 0,
+                left: 0,
+                right: 0,
+                marginBottom: 0,
+              }}
+              onPress={() => {
+                signOutUser();
+              }}
+              title="Logout"
+            />
 
             <Image
               source={require("../../assets/Logos/Quiet_mind-clr1.png")}

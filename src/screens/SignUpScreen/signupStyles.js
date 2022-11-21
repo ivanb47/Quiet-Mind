@@ -47,6 +47,7 @@ const styles = () => {
       justifyContent: "center",
       marginTop: 20,
       backgroundColor: theme.colors.black,
+      flexDirection: "row",
     },
     loginText: {
       color: theme.colors.white,

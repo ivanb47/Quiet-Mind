@@ -9,13 +9,15 @@ import {
   Keyboard,
   TouchableOpacity,
   TouchableWithoutFeedback,
+  ActivityIndicator,
+  Alert,
 } from "react-native";
 import SignUpStyle from "./signupStyles";
-
+import { signUp } from "../../firebase/firebaseCalls";
 const SignUp = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [description, setDescription] = useState("");
+  const [loader, setLoader] = useState(false);
   const [fullName, setFullName] = useState("");
   const styles = SignUpStyle();
   return (
@@ -36,7 +38,7 @@ const SignUp = (props) => {
             style={styles.inputView}
             placeholder="Full Name"
             placeholderTextColor="#808080"
-            onChangeText={(email) => setFullName(fullName)}
+            onChangeText={(fullName) => setFullName(fullName)}
           />
 
           <TextInput
@@ -55,8 +57,21 @@ const SignUp = (props) => {
             onChangeText={(password) => setPassword(password)}
           />
 
-          <TouchableOpacity style={styles.loginBtn}>
-            <Text style={styles.loginText}>Sign Up</Text>
+          <TouchableOpacity
+            onPress={() => {
+              if (email === "" || password === "" || fullName === "") {
+                Alert.alert("Enter all details to signup!");
+              } else {
+                signUp(email, password, fullName, setLoader).then((user) => {});
+              }
+            }}
+            style={styles.loginBtn}
+          >
+            {!loader ? (
+              <Text style={styles.loginText}>Sign Up</Text>
+            ) : (
+              <ActivityIndicator size={"small"} />
+            )}
           </TouchableOpacity>
           <View style={styles.account}>
             <Text>
