@@ -5,7 +5,7 @@ import MusicList from "./src/screens/MusicListScreen/MusicList";
 import ExerciseList from "./src/screens/ExerciseListScreen/ExerciseList";
 import LoginScreen from "./src/screens/LoginScreen/Login";
 import SignUpScreen from "./src/screens/SignUpScreen/SignUp";
-
+import Toast from "react-native-toast-message";
 import { theme } from "./src/screens/globalStyles";
 
 export default function App() {
@@ -15,6 +15,7 @@ export default function App() {
       {/* <LoginScreen /> */}
       {/* <SignUpScreen /> */}
       <AppNavigation />
+      <Toast position="bottom" />
     </ThemeProvider>
   );
 }

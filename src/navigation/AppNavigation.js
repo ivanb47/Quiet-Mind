@@ -28,7 +28,7 @@ const ChatStack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 //Firebase
-import { auth, onAuthStateChanged } from "../../firebase-config";
+import { auth, onAuthStateChanged } from "../firebase/firebase-config";
 
 const LoginStackScreen = () => {
   return (
