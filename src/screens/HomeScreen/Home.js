@@ -120,7 +120,6 @@ const Home = (props) => {
   const fetchSuggestion = () => {
     SuggestionAPI()
       .then((res) => {
-        console.log("Result: ", res);
         res.status
           ? setSuggestion(res.suggestion)
           : setSuggestion("Error fetching suggestion");

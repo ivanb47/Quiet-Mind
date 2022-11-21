@@ -123,17 +123,9 @@ const AppNavigation = () => {
   const [user, setUser] = React.useState(null);
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      console.log("User is signed in");
       setUser(user);
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      const uid = user.uid;
-      // ...
     } else {
-      console.log("User is signed out");
       setUser(null);
-      // User is signed out
-      // ...
     }
   });
   return (

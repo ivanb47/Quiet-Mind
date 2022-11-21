@@ -32,7 +32,6 @@ export const signUp = async (email, password, name, setLoader) => {
 export const signOutUser = async () => {
   signOut(auth)
     .then(() => {
-      console.log("Signed Out");
       Toast.show({
         type: "success",
         text1: "Sign Out Successful",

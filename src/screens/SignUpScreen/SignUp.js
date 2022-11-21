@@ -62,9 +62,7 @@ const SignUp = (props) => {
               if (email === "" || password === "" || fullName === "") {
                 Alert.alert("Enter all details to signup!");
               } else {
-                signUp(email, password, fullName, setLoader).then((user) => {
-                  console.log(user);
-                });
+                signUp(email, password, fullName, setLoader).then((user) => {});
               }
             }}
             style={styles.loginBtn}
