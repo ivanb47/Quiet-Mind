@@ -213,7 +213,7 @@ const Home = (props) => {
             decelerationRate={"fast"}
             showsHorizontalScrollIndicator={false}
             keyExtractor={(item) => item.id}
-            renderItem={(item) => <ItemCard style={homeStyles} item={item} />}
+            renderItem={(item) => <ItemCard style={homeStyles} item={item} showDescription={false}/>}
             contentContainerStyle={{ paddingBottom: 20 }}
             ListFooterComponent={() => (
               <ShowAllButton
@@ -221,13 +221,16 @@ const Home = (props) => {
                   props.navigation.navigate("ExerciseList");
                }}
               />
+
             )}
+            
             ListFooterComponentStyle={{
               alignSelf: "center",
               marginTop: 20,
               marginRight: 20,
             }}
           />
+
           <Text style={homeStyles.titleText}>Musics</Text>
           <FlatList
             data={selectTop5Songs()}
