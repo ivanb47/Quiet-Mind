@@ -65,13 +65,9 @@ const Settings = () => {
             {/* Currently we are not authenticating users so currently we don't need logout button */}
             <Button
               containerStyle={{
-                textAlign: "center",
-                position: "absolute",
                 marginHorizontal: 20,
                 borderRadius: 10,
-                bottom: 0,
-                left: 0,
-                right: 0,
+                marginTop: 20,
                 marginBottom: 0,
               }}
               onPress={() => {
