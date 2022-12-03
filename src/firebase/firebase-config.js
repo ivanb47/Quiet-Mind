@@ -11,8 +11,8 @@ import {
   signOut,
 } from "firebase/auth";
 import firebase from "firebase/compat/app";
-import "firebase/compat/storage";
-
+// import "firebase/compat/storage";
+import "firebase/compat/firestore";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
@@ -32,11 +32,11 @@ if (!firebase.apps.length) {
 }
 
 const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+const db = firebase.firestore();
 const auth = getAuth(app);
 
 export {
-  db,
+  // db,
   auth,
   firebase,
   signInWithEmailAndPassword,

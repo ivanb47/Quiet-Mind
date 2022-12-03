@@ -25,8 +25,8 @@ const styles = () => {
       marginHorizontal: 20,
     },
     closeButton: {
-      height: 25,
-      width: 25,
+      height: 37,
+      width: 37,
       justifyContent: "center",
       alignItems: "center",
       position: "absolute",
@@ -42,7 +42,7 @@ const styles = () => {
       alignSelf: "center",
       justifyContent: "center",
       width: "90%",
-      height: "75%",
+      height: "65%",
     },
     quoteTextContainer: {
       paddingTop: 10,
@@ -72,6 +72,7 @@ const styles = () => {
       opacity: 0.9,
       marginTop: 20,
       width: windowWidth - 40,
+      minHeight: 90,
       backgroundColor: theme.colors.cardColor,
       borderRadius: 15,
       paddingHorizontal: 15,
@@ -173,7 +174,7 @@ const styles = () => {
       fontWeight: "bold",
       fontSize: 30,
       paddingHorizontal: 20,
-      marginTop: 60,
+      marginTop: 90,
       height: "20%",
     },
     suggestionHeader: {

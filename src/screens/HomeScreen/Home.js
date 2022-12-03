@@ -8,7 +8,7 @@ import {
   View,
   TouchableOpacity,
 } from "react-native";
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign } from "@expo/vector-icons";
 import React, { useState, useEffect } from "react";
 import QuoteBox from "../../components/QuoteBox";
 import SuggestionCard from "../../components/SuggestionCard";
@@ -27,10 +27,6 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import excercises from "../../Data/excercise";
 import advices from "../../Data/advices";
 import songs from "../../Data/songs";
-import { BottomTabBarHeightCallbackContext } from "@react-navigation/bottom-tabs";
-
-
-
 const Home = (props) => {
   const [quoteAPI, setQuoteAPI] = useState();
   const { theme } = useTheme();
@@ -38,9 +34,7 @@ const Home = (props) => {
   const [showModal, setShowModal] = useState(false);
   const windowWidth = Dimensions.get("window").width;
   const [adviceItem, setAdviceItem] = useState(advices[0]);
-  const [excerciseItem, setExcerciseItem] = useState(excercises[0]);
   const [suggestion, setSuggestion] = useState("Call your closest friend");
-
   const [showFeelingBoredModal, setShowFeelingBoredModal] = useState(false);
   // sound related
 
@@ -138,14 +132,16 @@ const Home = (props) => {
             />
           </View>
 
-          <Text style={homeStyles.titleText}>Quote of the day
-          <TouchableOpacity>
-          <AntDesign name="sharealt" 
-          style={homeStyles.shareIcon}
-          size={20} 
-          color="black" />
-        
-        </TouchableOpacity>   
+          <Text style={homeStyles.titleText}>
+            Quote of the day
+            <TouchableOpacity>
+              <AntDesign
+                name="sharealt"
+                style={homeStyles.shareIcon}
+                size={20}
+                color="black"
+              />
+            </TouchableOpacity>
           </Text>
           <QuoteBox
             style={homeStyles}
@@ -213,17 +209,21 @@ const Home = (props) => {
             decelerationRate={"fast"}
             showsHorizontalScrollIndicator={false}
             keyExtractor={(item) => item.id}
-            renderItem={(item) => <ItemCard style={homeStyles} item={item} showDescription={false}/>}
+            renderItem={(item) => (
+              <ItemCard
+                style={homeStyles}
+                item={item}
+                showDescription={false}
+              />
+            )}
             contentContainerStyle={{ paddingBottom: 20 }}
             ListFooterComponent={() => (
               <ShowAllButton
                 onPress={() => {
                   props.navigation.navigate("ExerciseList");
-               }}
+                }}
               />
-
             )}
-            
             ListFooterComponentStyle={{
               alignSelf: "center",
               marginTop: 20,
