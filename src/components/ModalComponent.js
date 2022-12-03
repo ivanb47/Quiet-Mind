@@ -20,10 +20,8 @@ const ModalComponent = (props) => {
   useEffect(() => {
     fetchUser().then((user) => {
       if (user.favoriteAdvice.includes(advice.id)) {
-        console.log("is favorite");
         setIsFavorite(true);
       } else {
-        console.log("is not favorite");
         setIsFavorite(false);
       }
     });

@@ -164,12 +164,12 @@ const AppNavigation = () => {
               tabBarIcon: ({ focused, color, size }) =>
                 focused ? (
                   <Ionicons
-                    name="chatbox"
+                    name="heart"
                     size={size}
                     color={theme.colors.primary}
                   />
                 ) : (
-                  <Ionicons name="chatbox-outline" size={size} color={color} />
+                  <Ionicons name="heart-outline" size={size} color={color} />
                 ),
             }}
             component={ChatStackScreen}
