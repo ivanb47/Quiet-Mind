@@ -5,7 +5,9 @@ import {
   Dimensions,
   FlatList,
   Image,
+  Share,
   View,
+  Button,
   TouchableOpacity,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
@@ -114,6 +116,28 @@ const Home = (props) => {
         setShowFeelingBoredModal(true);
       });
   };
+
+  const onShare = async () => {
+    try {
+      const result = await Share.share({
+        message:
+        quoteAPI?.quote
+
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+ 
   return (
     <SafeAreaView style={homeStyles.mainContainer}>
       <LinearGradient
@@ -140,7 +164,7 @@ const Home = (props) => {
                 style={homeStyles.shareIcon}
                 size={20}
                 color="black"
-              />
+                onPress={onShare} title="Share" />
             </TouchableOpacity>
           </Text>
           <QuoteBox
