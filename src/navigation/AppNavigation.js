@@ -3,6 +3,7 @@ import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { ThemeProvider } from "@rneui/themed";
 import { useTheme } from "@rneui/themed";
+import * as SplashScreen from "expo-splash-screen";
 // Imports for navigation handling
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -124,8 +125,10 @@ const AppNavigation = () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setUser(user);
+      SplashScreen.hideAsync();
     } else {
       setUser(null);
+      SplashScreen.hideAsync();
     }
   });
   return (

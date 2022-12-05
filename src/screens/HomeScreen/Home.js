@@ -135,7 +135,7 @@ const Home = (props) => {
       alert(error.message);
     }
   };
- 
+
   return (
     <SafeAreaView style={homeStyles.mainContainer}>
       <LinearGradient
@@ -162,7 +162,9 @@ const Home = (props) => {
                 style={homeStyles.shareIcon}
                 size={20}
                 color="black"
-                onPress={onShare} title="Share" />
+                onPress={onShare}
+                title="Share"
+              />
             </TouchableOpacity>
           </Text>
           <QuoteBox
