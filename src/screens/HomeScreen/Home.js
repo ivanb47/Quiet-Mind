@@ -120,18 +120,16 @@ const Home = (props) => {
   const onShare = async () => {
     try {
       const result = await Share.share({
-        message:
-        quoteAPI?.quote
-
+        message: quoteAPI?.quote + " - " + quoteAPI?.quoteBy,
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
-          // shared with activity type of result.activityType
+          console.log("shared with activity type of " + result.activityType);
         } else {
-          // shared
+          console.log("shared");
         }
       } else if (result.action === Share.dismissedAction) {
-        // dismissed
+        console.log("dismissed");
       }
     } catch (error) {
       alert(error.message);
