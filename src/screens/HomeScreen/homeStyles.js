@@ -22,7 +22,7 @@ const styles = () => {
       justifyContent: "space-between",
     },
     shareIcon: {
-      marginLeft: 140,
+      marginRight: 20,
       fontSize: globalStyles.fontSet.title1,
       color: theme.colors.primary,
     },

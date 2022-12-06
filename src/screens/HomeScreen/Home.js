@@ -165,9 +165,14 @@ const Home = (props) => {
               style={homeStyles.logo}
             />
           </View>
-
-          <Text style={homeStyles.titleText}>
-            Quote of the day
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <Text style={homeStyles.titleText}>Quote of the day</Text>
             <TouchableOpacity>
               <AntDesign
                 name="sharealt"
@@ -178,7 +183,8 @@ const Home = (props) => {
                 title="Share"
               />
             </TouchableOpacity>
-          </Text>
+          </View>
+
           <QuoteBox
             style={homeStyles}
             quote={quoteAPI?.quote}
