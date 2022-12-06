@@ -21,6 +21,7 @@ const styles = () => {
       marginBottom: 10,
     },
     subTitleText: {
+      fontWeight: "bold",
       fontSize: globalStyles.fontSet.title3,
       paddingLeft: 20,
       paddingTop: 10,

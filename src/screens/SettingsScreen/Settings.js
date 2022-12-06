@@ -7,6 +7,7 @@ import {
   View,
   Switch,
   TouchableOpacity,
+  Linking,
 } from "react-native";
 import React, { useState } from "react";
 import styles from "./settingsStyles";
@@ -68,13 +69,15 @@ const Settings = () => {
 
             <Text style={settingsStyles.subTitleText}>Support</Text>
 
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => Linking.openURL("mailto:udayskhatri@gmail.com")}
+            >
               <Text style={settingsStyles.preferencesText}>Contact Us</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            {/* <TouchableOpacity>
               <Text style={settingsStyles.preferencesText}>Help and FAQs</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             <Text style={settingsStyles.subTitleText}>Legal</Text>
 
@@ -82,9 +85,9 @@ const Settings = () => {
               <Text style={settingsStyles.preferencesText}>Privacy Policy</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            {/* <TouchableOpacity>
               <Text style={settingsStyles.preferencesText}>Terms Of Use</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             {/* Currently we are not authenticating users so currently we don't need logout button */}
             <Button
