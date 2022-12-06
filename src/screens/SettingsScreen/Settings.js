@@ -12,12 +12,17 @@ import React, { useState } from "react";
 import styles from "./settingsStyles";
 import { ThemeProvider, useTheme, Button } from "@rneui/themed";
 import { signOutUser } from "../../firebase/firebaseCalls";
+import { useThemeMode } from "@rneui/themed";
 
 const Settings = () => {
   const { theme } = useTheme();
+  const { mode, setMode } = useThemeMode();
   const settingsStyles = styles();
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  const [isEnabled, setIsEnabled] = useState(mode == "light" ? false : true);
+  const toggleSwitch = () => {
+    setIsEnabled((previousState) => !previousState);
+    setMode(mode == "light" ? "dark" : "light");
+  };
   const windowWidth = Dimensions.get("window").width;
   {
     return (
@@ -32,15 +37,19 @@ const Settings = () => {
 
             <View style={{ flex: 1, flexDirection: "row" }}>
               <Text style={settingsStyles.preferencesText}>Dark Mode</Text>
-              <Switch style={settingsStyles.swiches} />
+              <Switch
+                value={isEnabled}
+                onValueChange={toggleSwitch}
+                style={settingsStyles.swiches}
+              />
             </View>
 
-            <View style={{ flex: 1, flexDirection: "row" }}>
+            {/* <View style={{ flex: 1, flexDirection: "row" }}>
               <Text style={settingsStyles.preferencesText}>
                 Show Quote On Home Screen
               </Text>
               <Switch style={settingsStyles.swiches} />
-            </View>
+            </View> */}
 
             <Text style={settingsStyles.subTitleText}>Support</Text>
 
