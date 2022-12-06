@@ -103,6 +103,12 @@ const Home = (props) => {
     });
   };
 
+  const selectTop5Advices = () => {
+    return advices.filter((item) => {
+      return item.id < 5 && item;
+    });
+  };
+
   const fetchSuggestion = () => {
     SuggestionAPI()
       .then((res) => {
@@ -170,7 +176,7 @@ const Home = (props) => {
           </TouchableOpacity>
           <Text style={homeStyles.titleText}>Advices</Text>
           <FlatList
-            data={advices}
+            data={selectTop5Advices()}
             horizontal={true}
             snapToInterval={windowWidth}
             snapToAlignment={"center"}

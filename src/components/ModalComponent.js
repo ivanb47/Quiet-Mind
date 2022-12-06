@@ -17,6 +17,20 @@ const ModalComponent = (props) => {
   const { theme } = useTheme();
   const homeStyles = styles();
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isDetailPage, setDetailPage] = useState(false);
+  const [buttonText, setButtonText] = useState(true);
+  
+  const toggler = () => {
+    isDetailPage ? setDetailPage(false): setDetailPage(true)
+    if(isDetailPage){
+      setButtonText("Go back") 
+    }
+    else{
+      setButtonText("See more")
+    }
+  }
+
+  
   useEffect(() => {
     fetchUser().then((user) => {
       if (user.favoriteAdvice.includes(advice.id)) {
@@ -69,18 +83,33 @@ const ModalComponent = (props) => {
             color={isFavorite ? theme.colors.white : theme.colors.black}
           />
         </TouchableOpacity>
+          {isDetailPage == true ?(
+            <><Text style={style.subHeader}>{advice?.secondAdviceShort}</Text>
+              <Text style={style.modalDescription}>{advice?.secondAdviceLong}</Text>
+              <Text style={style.subHeader}>{advice?.challengeTitle}</Text>
+              <Text style={style.modalDescription}>{advice?.challengeText}</Text>
+              <Text style={style.quoteByText}>{advice?.reference}</Text>
 
-        <Text style={style.header}>{advice?.title}</Text>
-        <View style={[style.tinyLogo, style.backgroundShadow]}>
-          <MaterialCommunityIcons name={advice?.image} size={80} />
-        </View>
+            </>
+          ):
+          <><Text style={style.header}>{advice?.title}</Text>
+          <View style={[style.tinyLogo, style.backgroundShadow]}>
+            <MaterialCommunityIcons name={advice?.image} size={80} />
+          </View>
+  
+          <Text style={style.subHeader}>{advice?.advicehort}</Text>
+          <View style={style.modalView}>
+            <Text style={style.modalDescription}>{advice?.adviceLong}</Text>
+          </View>
 
-        <Text style={style.subHeader}>{advice?.advicehort}</Text>
-        <View style={style.modalView}>
-          <Text style={style.modalDescription}>{advice?.adviceLong}</Text>
-        </View>
+          </>
+          }
 
-        <Button buttonStyle={style.modalButton}>see more</Button>
+<Button
+         onPress={toggler}
+         buttonStyle={style.modalButton}
+         >{buttonText}</Button>
+
       </View>
     </Modal>
   );

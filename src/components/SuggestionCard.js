@@ -1,21 +1,18 @@
 import {
-  Alert,
-  Modal,
-  Pressable,
   View,
   Text,
-  Image,
   TouchableOpacity,
 } from "react-native";
-import ModalComponent from "./ModalComponent";
-import React, { useState } from "react";
+
+import React from "react";
 import style from "./styles";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, Ionicons, MaterialIcons, FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 
 const SuggestionCard = ({ item, onPress }) => {
-  const { title, adviceShort, image, type } = item.item;
+  const { title, adviceShort, image, imageType } = item.item;
 
   const styles = style();
+ 
   return (
     <TouchableOpacity
       style={[
@@ -31,12 +28,31 @@ const SuggestionCard = ({ item, onPress }) => {
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.description}>{adviceShort}</Text>
       </View>
-
+      {imageType === "Ionicons" ? (
+        <Ionicons
+          name={image}
+          size={42}
+          style={[styles.icon, { zIndex: 1 }]}
+        />
+      ) : imageType === "FontAwesome" ? (
+        <FontAwesome
+          name={image}
+          size={42}
+          style={[styles.icon, { zIndex: 1 }]}
+        />
+      ) : imageType === "MaterialIcons" ? (
+        <MaterialIcons
+          name={image}
+          size={42}
+          style={[styles.icon, { zIndex: 1 }]}
+        />
+        ):
+      // Default case
       <MaterialCommunityIcons
-        name={image}
-        size={42}
-        style={[styles.icon, { zIndex: 1 }]}
-      />
+          name={image}
+          size={42}
+          style={[styles.icon, { zIndex: 1 }]}
+        />}
     </TouchableOpacity>
   );
 };
