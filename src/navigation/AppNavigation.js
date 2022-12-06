@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { useTheme, useThemeMode } from "@rneui/themed";
 import * as SplashScreen from "expo-splash-screen";
+import { StatusBar } from "expo-status-bar";
 // Imports for navigation handling
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -183,6 +184,7 @@ const AppNavigation = () => {
   }, []);
   return (
     <NavigationContainer>
+      <StatusBar style={mode == "dark" ? "light" : "dark"} />
       {user == null ? (
         <LoginStackScreen />
       ) : (

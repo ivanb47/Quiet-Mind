@@ -46,9 +46,9 @@ const Settings = () => {
           <View>
             <Text style={settingsStyles.subTitleText}>Preferences</Text>
 
-            <TouchableOpacity>
+            {/* <TouchableOpacity>
               <Text style={settingsStyles.preferencesText}>Notification</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             <View style={{ flex: 1, flexDirection: "row" }}>
               <Text style={settingsStyles.preferencesText}>Dark Mode</Text>
