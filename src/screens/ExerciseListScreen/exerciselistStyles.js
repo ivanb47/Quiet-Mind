@@ -45,19 +45,16 @@ const styles = () => {
       width: 400,
     },
 
-    backgroundShadow:
-      mode === "dark"
-        ? {}
-        : {
-            shadowColor: theme.colors.grey1,
-            shadowOffset: {
-              width: 2,
-              height: 2,
-            },
-            shadowOpacity: 0.25,
-            shadowRadius: 3.84,
-            elevation: 5,
-          },
+    backgroundShadow: {
+      shadowColor: theme.colors.grey1,
+      shadowOffset: {
+        width: 2,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5,
+    },
   });
 };
 

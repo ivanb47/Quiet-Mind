@@ -30,20 +30,25 @@ const styles = () => {
       height: 40,
       borderRadius: 10,
     },
+    searchbarContainer: {
+      backgroundColor: "transparent",
+      borderTopColor: "transparent",
+      borderBottomColor: "transparent",
+    },
+    textInput: {
+      color: theme.colors.black,
+    },
 
-    backgroundShadow:
-      mode === "dark"
-        ? {}
-        : {
-            shadowColor: theme.colors.grey1,
-            shadowOffset: {
-              width: 2,
-              height: 2,
-            },
-            shadowOpacity: 0.25,
-            shadowRadius: 3.84,
-            elevation: 5,
-          },
+    backgroundShadow: {
+      shadowColor: theme.colors.grey1,
+      shadowOffset: {
+        width: 2,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 3.84,
+      elevation: 5,
+    },
   });
 };
 

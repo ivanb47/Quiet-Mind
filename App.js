@@ -8,15 +8,11 @@ import SignUpScreen from "./src/screens/SignUpScreen/SignUp";
 import Toast from "react-native-toast-message";
 import { theme } from "./src/screens/globalStyles";
 import * as SplashScreen from "expo-splash-screen";
-
 SplashScreen.preventAutoHideAsync();
-
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <StatusBar style="default" />
-      {/* <LoginScreen /> */}
-      {/* <SignUpScreen /> */}
       <AppNavigation />
       <Toast position="bottom" />
     </ThemeProvider>

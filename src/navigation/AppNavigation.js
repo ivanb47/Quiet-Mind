@@ -1,8 +1,7 @@
 import { View, Text, Platform } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
-import { ThemeProvider } from "@rneui/themed";
-import { useTheme } from "@rneui/themed";
+import { useTheme, useThemeMode } from "@rneui/themed";
 import * as SplashScreen from "expo-splash-screen";
 // Imports for navigation handling
 import { NavigationContainer } from "@react-navigation/native";
@@ -18,6 +17,10 @@ import ChatScreen from "../screens/ChatScreen/Chat";
 import ExerciseListScreen from "../screens/ExerciseListScreen/ExerciseList";
 import MusicListScreen from "../screens/MusicListScreen/MusicList";
 import CardsListScreen from "../screens/CardsListScreen/CardsList";
+
+// library used for caching
+import { Cache } from "react-native-cache";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // navigation stack initialization for screens
 const LoginStack = createNativeStackNavigator();
@@ -150,6 +153,7 @@ const ChatStackScreen = () => {
 
 const AppNavigation = () => {
   const { theme } = useTheme();
+  const { mode, setMode } = useThemeMode();
   const [user, setUser] = React.useState(null);
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -160,6 +164,23 @@ const AppNavigation = () => {
       SplashScreen.hideAsync();
     }
   });
+
+  const cache = new Cache({
+    namespace: "QUEST_MIND",
+    policy: {
+      maxEntries: 50, // if unspecified, it can have unlimited entries
+      stdTTL: 0, // the standard ttl as number in seconds, default: 0 (unlimited)
+    },
+    backend: AsyncStorage,
+  });
+  useEffect(() => {
+    async function fetchCache() {
+      const display_mode = await cache.get("display_mode");
+      console.log("display_mode", display_mode);
+      setMode(display_mode);
+    }
+    fetchCache();
+  }, []);
   return (
     <NavigationContainer>
       {user == null ? (

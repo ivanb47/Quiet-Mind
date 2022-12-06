@@ -5,7 +5,7 @@ const styles = () => {
   return StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: theme.colors.background,
+      backgroundColor: theme.colors.white,
       alignItems: "center",
       justifyContent: "center",
     },
@@ -37,6 +37,7 @@ const styles = () => {
       height: 45,
       paddingHorizontal: 10,
       marginBottom: 20,
+      color: theme.colors.black,
     },
 
     loginBtn: {
@@ -51,6 +52,9 @@ const styles = () => {
     },
     loginText: {
       color: theme.colors.white,
+    },
+    text: {
+      color: theme.colors.black,
     },
   });
 };

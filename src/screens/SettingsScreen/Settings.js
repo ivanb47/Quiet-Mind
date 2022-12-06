@@ -13,17 +13,32 @@ import styles from "./settingsStyles";
 import { ThemeProvider, useTheme, Button } from "@rneui/themed";
 import { signOutUser } from "../../firebase/firebaseCalls";
 import { useThemeMode } from "@rneui/themed";
+// library used for caching
+import { Cache } from "react-native-cache";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Settings = () => {
   const { theme } = useTheme();
   const { mode, setMode } = useThemeMode();
   const settingsStyles = styles();
   const [isEnabled, setIsEnabled] = useState(mode == "light" ? false : true);
-  const toggleSwitch = () => {
+
+  const cache = new Cache({
+    namespace: "QUEST_MIND",
+    policy: {
+      maxEntries: 50, // if unspecified, it can have unlimited entries
+      stdTTL: 0, // the standard ttl as number in seconds, default: 0 (unlimited)
+    },
+    backend: AsyncStorage,
+  });
+
+  const toggleSwitch = async () => {
     setIsEnabled((previousState) => !previousState);
-    setMode(mode == "light" ? "dark" : "light");
+    const newMode = mode == "light" ? "dark" : "light";
+    setMode(newMode);
+    await cache.set("display_mode", newMode);
   };
-  const windowWidth = Dimensions.get("window").width;
+
   {
     return (
       <SafeAreaView style={settingsStyles.mainContainer}>
