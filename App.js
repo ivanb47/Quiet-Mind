@@ -7,6 +7,9 @@ import LoginScreen from "./src/screens/LoginScreen/Login";
 import SignUpScreen from "./src/screens/SignUpScreen/SignUp";
 import Toast from "react-native-toast-message";
 import { theme } from "./src/screens/globalStyles";
+import * as SplashScreen from "expo-splash-screen";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   return (
