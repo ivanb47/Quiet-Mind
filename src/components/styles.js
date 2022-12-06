@@ -185,7 +185,7 @@ const styles = () => {
     suggestionHeader: {
       fontSize: globalStyles.fontSet.title2,
       fontWeight: "bold",
-      color: theme.colors.black,
+      color: "#000",
       textAlign: "center",
       paddingHorizontal: 20,
       paddingVertical: 40,
