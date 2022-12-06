@@ -36,13 +36,13 @@ const styles = () => {
       backgroundColor: theme.colors.white,
     },
     modal: {
-      // flex: 1,
+      flex: 1,
       backgroundColor: theme.colors.white,
       borderRadius: 15,
       alignSelf: "center",
       justifyContent: "center",
       width: "90%",
-      height: "65%",
+      marginVertical: 120,
     },
     quoteTextContainer: {
       paddingTop: 10,
@@ -190,6 +190,7 @@ const styles = () => {
       fontSize: 20,
       padding: 20,
       justifyContent: "center",
+      fontWeight: "bold",
     },
     modalButton: {
       backgroundColor: theme.colors.modalButton,
