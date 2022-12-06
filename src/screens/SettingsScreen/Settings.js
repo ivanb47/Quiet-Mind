@@ -82,6 +82,7 @@ const Settings = () => {
               onPress={() => {
                 signOutUser();
               }}
+              titleStyle={{ color: theme.colors.white }}
               title="Logout"
             />
 

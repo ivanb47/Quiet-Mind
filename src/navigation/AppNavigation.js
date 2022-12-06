@@ -32,6 +32,7 @@ const Tab = createBottomTabNavigator();
 import { auth, onAuthStateChanged } from "../firebase/firebase-config";
 
 const LoginStackScreen = () => {
+  const { theme } = useTheme();
   return (
     <LoginStack.Navigator>
       <LoginStack.Screen
@@ -41,6 +42,10 @@ const LoginStackScreen = () => {
           headerLargeTitle: true,
           headerTransparent: true,
           headerTitle: "Login",
+          headerTintColor: theme.colors.black,
+          headerStyle: {
+            backgroundColor: theme.colors.white,
+          },
         }}
       />
       <LoginStack.Screen
@@ -50,17 +55,26 @@ const LoginStackScreen = () => {
           headerLargeTitle: true,
           headerTransparent: true,
           headerTitle: "Sign Up",
+          headerTintColor: theme.colors.black,
+          headerStyle: {
+            backgroundColor: theme.colors.white,
+          },
         }}
       />
     </LoginStack.Navigator>
   );
 };
 const HomeStackScreen = () => {
+  const { theme } = useTheme();
   return (
     <HomeStack.Navigator
       screenOptions={{
         headerTransparent: Platform.OS == "ios" ? true : false,
         headerLargeTitle: true,
+        headerTintColor: theme.colors.black,
+        headerStyle: {
+          backgroundColor: theme.colors.white,
+        },
       }}
     >
       <HomeStack.Screen
@@ -96,6 +110,7 @@ const HomeStackScreen = () => {
   );
 };
 const SettingStackScreen = () => {
+  const { theme } = useTheme();
   return (
     <SettingStack.Navigator>
       <SettingStack.Screen
@@ -104,17 +119,31 @@ const SettingStackScreen = () => {
         options={{
           headerTitle: "Settings",
           headerLargeTitle: true,
-          // headerShown: false,
+          headerTintColor: theme.colors.black,
+          headerStyle: {
+            backgroundColor: theme.colors.background,
+          },
         }}
       />
     </SettingStack.Navigator>
   );
 };
-
 const ChatStackScreen = () => {
+  const { theme } = useTheme();
   return (
     <ChatStack.Navigator>
-      <ChatStack.Screen name="ChatScreen" component={ChatScreen} />
+      <ChatStack.Screen
+        name="Favorites"
+        options={{
+          headerTitle: "Favorites",
+          headerLargeTitle: true,
+          headerTintColor: theme.colors.black,
+          headerStyle: {
+            backgroundColor: theme.colors.background,
+          },
+        }}
+        component={ChatScreen}
+      />
     </ChatStack.Navigator>
   );
 };
