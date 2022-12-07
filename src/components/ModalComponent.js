@@ -3,9 +3,15 @@ import React, { useEffect, useState } from "react";
 import { ThemeProvider, useTheme } from "@rneui/themed";
 import styles from "./styles";
 import { Button } from "@rneui/base";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  MaterialCommunityIcons,
+  Ionicons,
+  MaterialIcons,
+  FontAwesome,
+  FontAwesome5,
+  AntDesign,
+} from "@expo/vector-icons";
 import Modal from "react-native-modal";
-import { AntDesign } from "@expo/vector-icons";
 import {
   addFavoriteAdvice,
   removeFavoriteAdvice,
@@ -112,7 +118,16 @@ const ModalComponent = (props) => {
           <>
             <Text style={style.header}>{advice?.title}</Text>
             <View style={[style.tinyLogo, style.backgroundShadow]}>
-              <MaterialCommunityIcons name={advice?.image} size={80} />
+              {advice?.imageType === "Ionicons" ? (
+                <Ionicons name={advice?.image} size={80} />
+              ) : advice?.imageType === "FontAwesome" ? (
+                <FontAwesome name={advice?.image} size={80} />
+              ) : advice?.imageType === "MaterialIcons" ? (
+                <MaterialIcons name={advice?.image} size={80} />
+              ) : (
+                // Default case
+                <MaterialCommunityIcons name={advice?.image} size={80} />
+              )}
             </View>
 
             <Text style={style.subHeader}>{advice?.advicehort}</Text>

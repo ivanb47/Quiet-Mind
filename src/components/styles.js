@@ -179,6 +179,7 @@ const styles = () => {
       fontWeight: "bold",
       fontSize: 30,
       paddingHorizontal: 20,
+      color: theme.colors.black,
       marginTop: 90,
       height: "20%",
     },
@@ -196,7 +197,7 @@ const styles = () => {
       padding: 20,
       justifyContent: "center",
       fontWeight: "bold",
-      color: theme.colors.white
+      color: theme.colors.black,
     },
     modalButton: {
       backgroundColor: theme.colors.modalButton,
@@ -215,7 +216,7 @@ const styles = () => {
       margin: 20,
       fontSize: 15,
       alignContent: "center",
-      color: theme.colors.white
+      color: theme.colors.black,
     },
   });
 };

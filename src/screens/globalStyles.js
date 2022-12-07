@@ -29,6 +29,7 @@ export const theme = createTheme({
     bgGradientStart: "#040f14",
     bgGradientEnd: "#211015",
     modalButton: "#00ABB3",
+    modalDescription: "#122a2e",
     modalBG: "rgba(38,42,56,0.8)",
   },
 });

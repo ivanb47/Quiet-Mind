@@ -79,7 +79,8 @@ const advices = [
     secondAdviceLong: `Anxiety can augment the feeling of relaxation. Learn to differentiate the feelings of a tensed muscle and a completely relaxed muscla with PMR.\n\nQuick PMR involves the tensing and releasing of muscle groups in the following order:\n\n1. Lower limbs (feet and legs)\n2. Stomach and chest\n3. Arms, shoulders, and neck\n4. Face\n\nTense for 5s, release for 15s.`,
     challengeTitle: "",
     challengeText: ``,
-    reference: "*Royal College of Psychiatry, Physical activity and mental health, 2012",
+    reference:
+      "*Royal College of Psychiatry, Physical activity and mental health, 2012",
   },
   {
     id: 7,
@@ -93,7 +94,8 @@ const advices = [
     secondAdviceLong: `The rise and fall of body temperature helps relaxation and improves sleep. A shower is also an opportunity to pause on your problems. It gives you a time for reflection and mindfulness.*`,
     challengeTitle: "Practise Mindfulness",
     challengeText: `Next time you take a shower:\n1. What is the scent of your soap?\n2. Are you getting goosebumps?\n3. Is there something stressing you?\n4. How can you change your response next time?`,
-    reference: "*Elisha Goldstein, Ph.D., Turn on the shower and reduce your stress today, 2009",
+    reference:
+      "*Elisha Goldstein, Ph.D., Turn on the shower and reduce your stress today, 2009",
   },
   {
     id: 8,
@@ -106,7 +108,8 @@ const advices = [
     secondAdviceLong: `Sleep deprivation can put you at risk for anxiety, mood disorders, and poor performance at work or school. Practice good sleep habits by esbatlishing a routine sleep schedule.*`,
     challengeTitle: "Relaxation",
     challengeText: `If you tend to take your problems to bed, try \bwriting them down\b, and then putting them aside\n\nOne hour before bed, take a bath, read a book, or practice relaxation exercises`,
-    reference: "*Division of Sleep Medicine at Harvard Medical School, Twelve simple tips to improve your sleep, 2007",
+    reference:
+      "*Division of Sleep Medicine at Harvard Medical School, Twelve simple tips to improve your sleep, 2007",
   },
   {
     id: 9,
@@ -134,7 +137,8 @@ const advices = [
     secondAdviceLong: `If you're having a party, you play one kind of music. If you're relaxing after a long day at the office, you play another kind of music. We are already uing music as medicine in this place and time.`,
     challengeTitle: "Listen to relaxing music",
     challengeText: `Search for calming playlists online on sites such as Sporify, Youtube, Apple Music. Try using keywords like "Classical" or "Nature".`,
-    reference: "*Heather Wright. The correlation of classical, jazz and pop music to a reduction of dental anxiety experienced by adult patients. 2018",
+    reference:
+      "*Heather Wright. The correlation of classical, jazz and pop music to a reduction of dental anxiety experienced by adult patients. 2018",
   },
   {
     id: 11,
@@ -162,7 +166,8 @@ const advices = [
     secondAdviceLong: `It is hard to distinguish between a problem-solving thought and a nagging worry that has no benefit. Practise mindfulness to recognize passing thoughts as separate from your core self.*`,
     challengeTitle: "Practise Mindfulness",
     challengeText: `1. Sit comfortably\n2. Focus on your breathing. \n3. Bring your attention to the present. \n\nTry not to drift into conerns about the past or future.`,
-    reference: "*Julie Cortiss, Mindfulness mediation may ease anxiety, mental stress, 2014",
+    reference:
+      "*Julie Cortiss, Mindfulness mediation may ease anxiety, mental stress, 2014",
   },
   {
     id: 13,
@@ -176,7 +181,8 @@ const advices = [
     secondAdviceLong: `Your mood: Restlessness; lack of focus; irritability or anger\nYour body: Headache; muscle tension; fatigue; stomach upset\nYour behaviour: Disordered eating; angry outbursts; social withdrawal.*`,
     challengeTitle: "Practise Mindfulness",
     challengeText: `Be aware of your body.]n1. Are your muscles tense?\n2.Do you feel angry or upset?\n3. Do you feel sleepy?\n4. How would you describe your thoughts?`,
-    reference: "*Mayo Clinic, Stress symptoms Effects on your body and behaviour, 2015",
+    reference:
+      "*Mayo Clinic, Stress symptoms Effects on your body and behaviour, 2015",
   },
   {
     id: 14,
@@ -196,7 +202,7 @@ const advices = [
     id: 15,
     section: "Your Mind",
     title: "Are you feeling ineffective?",
-    image: "chart-area",
+    image: "area-chart",
     imageType: "FontAwesome",
     adviceShort: "Finish something small",
     adviceLong: `Pause right now.\n\nRespond to an email, load up the dishwasher, or pack your bag for your next trip.`,
@@ -204,7 +210,8 @@ const advices = [
     secondAdviceLong: `Train your brain to release a dopamine "reward" by completing small tasks, which can spark both pleasure and motivation.*`,
     challengeTitle: "Challenge",
     challengeText: `Do something that takes less than 3 minutes to do.\n\nRefill a water bottle, organize a folder on your computer, clean out your fallet, or reply to an email.`,
-    reference: "*Kevan Lee, The science of motivation Your Brain on dopamine, 2013",
+    reference:
+      "*Kevan Lee, The science of motivation Your Brain on dopamine, 2013",
   },
   {
     id: 16,
@@ -218,7 +225,8 @@ const advices = [
     secondAdviceLong: `When you are lost on a spiral of negative thinking, it can be difficult to snap back to the present.\nSometimes, your pace and dircation gets confusing.\n\nBeingattentative to your surroundings can help you get grounded.`,
     challengeTitle: "",
     challengeText: `Name 5 things you can see.\nName 4 things you can feel.\nName 3 things you can hear.\nName 2 things you can smell.\nName 1 good thing about you\n`,
-    reference: "*PEI Rape and Sexual Assault Centre, Grounding techniques, n.d.",
+    reference:
+      "*PEI Rape and Sexual Assault Centre, Grounding techniques, n.d.",
   },
   {
     id: 17,
@@ -228,7 +236,8 @@ const advices = [
     imageType: "MaterialCommunityIcons",
     adviceShort: "Ask them to share their story.",
     adviceLong: `Everyone has their experiences and values, and no one has everything figured out.\n\nIdentify your own successes.`,
-    secondAdviceShort: "Another's sucess often has no effect on your opportunities",
+    secondAdviceShort:
+      "Another's sucess often has no effect on your opportunities",
     secondAdviceLong: `For the survival of our ancestors, our brain overestimates threats while underestimating opportunities and resources. Be mindful of others' forces and know there are many opportunities for success.*`,
     challengeTitle: "Challenge",
     challengeText: `Ask someone successful about the failures and struggles they've faced and how they coped.\n\nA lot can be learned from listening, and people often like the share.`,
@@ -238,15 +247,17 @@ const advices = [
     id: 18,
     section: "Your Feelings",
     title: "Need to vent?",
-    image: "pencil-alt",
-    imageType: "FontAwesome5",
+    image: "pencil",
+    imageType: "FontAwesome",
     adviceShort: "Write in a journal/blog.",
     adviceLong: `If comfortable, ask a friend, family member, or mentor to listen to your concerns.\n\nAsking for help shows strength.`,
-    secondAdviceShort: "Journaling can help you work through difficult emotions",
+    secondAdviceShort:
+      "Journaling can help you work through difficult emotions",
     secondAdviceLong: `Writing down your thoughts can help you become more self aware and/or help to calm you during periods of high stress or anxiety.*`,
     challengeTitle: "Challenge",
     challengeText: `It is ok to be negative. Write down 3 things that are bothering you on a piece of paper.\n\nOr, ask someone's opinion on a struggle you are going through.`,
-    reference: "*Centre for Addiction and Mental Health (CAMH), High school survival guide - mental health edition, 2014",
+    reference:
+      "*Centre for Addiction and Mental Health (CAMH), High school survival guide - mental health edition, 2014",
   },
   {
     id: 19,
@@ -260,7 +271,8 @@ const advices = [
     secondAdviceLong: `Our culture's bias for positivity may cause shame or guilt when you feel negative, but acknowledging distressing emotions is important for good mental health.*`,
     challengeTitle: "Practise Mindfulness",
     challengeText: `Ask yourself.\n1. What's bothering me?\n2. How long have I felt this way?\n3. Do I accept my feelings?\n4. Have I expressed them?\n5. How would/id I do that?`,
-    reference: "*Timi Gustafon, R.D., Keeping your emotions bottled up could kill you, 2014",
+    reference:
+      "*Timi Gustafon, R.D., Keeping your emotions bottled up could kill you, 2014",
   },
   {
     id: 20,
@@ -302,7 +314,8 @@ const advices = [
     secondAdviceLong: `Clutter is stressful for the brain. A cluttered environment can lead to coping mechanisms like overeating. Tidy surroundings decrease stress.*`,
     challengeTitle: "Challenge",
     challengeText: `Find 3 items nearby and put them where they belong.`,
-    reference: "*Eva Selhub, M.D., How cleaning and organizing can improve your physical and mental health, Shape.com, 2015",
+    reference:
+      "*Eva Selhub, M.D., How cleaning and organizing can improve your physical and mental health, Shape.com, 2015",
   },
   {
     id: 23,
@@ -316,7 +329,8 @@ const advices = [
     secondAdviceLong: `The box breathing technique asks you to be attentive to your breathing to calm down. It can be done discreetly anywhere.*`,
     challengeTitle: "",
     challengeText: `Breathe in (Count to 4)\nHold (Count to 4)\nBreathe out (Count to 4)\nPause (Count to 4)`,
-    reference: "*Ontario Bar Association, At your desk breathing exercise, 2016",
+    reference:
+      "*Ontario Bar Association, At your desk breathing exercise, 2016",
   },
 ];
 export default advices;
