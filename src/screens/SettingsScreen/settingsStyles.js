@@ -7,7 +7,6 @@ const styles = () => {
     mainContainer: {
       flex: 1,
       backgroundColor: theme.colors.background,
-      paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },
     titleText: {
       paddingLeft: 20,
@@ -22,6 +21,7 @@ const styles = () => {
       marginBottom: 10,
     },
     subTitleText: {
+      fontWeight: "bold",
       fontSize: globalStyles.fontSet.title3,
       paddingLeft: 20,
       paddingTop: 10,

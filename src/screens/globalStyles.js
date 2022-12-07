@@ -25,7 +25,7 @@ export const theme = createTheme({
     primary: "#fdfefc",
     secondary: "#9a586f",
     tertiary: "#1c6c8a",
-    cardColor: "#1c1c1c",
+    cardColor: darkColors.grey5,
     bgGradientStart: "#040f14",
     bgGradientEnd: "#211015",
     modalButton: "#00ABB3",

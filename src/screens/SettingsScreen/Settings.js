@@ -7,18 +7,39 @@ import {
   View,
   Switch,
   TouchableOpacity,
+  Linking,
 } from "react-native";
 import React, { useState } from "react";
 import styles from "./settingsStyles";
 import { ThemeProvider, useTheme, Button } from "@rneui/themed";
 import { signOutUser } from "../../firebase/firebaseCalls";
+import { useThemeMode } from "@rneui/themed";
+// library used for caching
+import { Cache } from "react-native-cache";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Settings = () => {
   const { theme } = useTheme();
+  const { mode, setMode } = useThemeMode();
   const settingsStyles = styles();
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
-  const windowWidth = Dimensions.get("window").width;
+  const [isEnabled, setIsEnabled] = useState(mode == "light" ? false : true);
+
+  const cache = new Cache({
+    namespace: "QUEST_MIND",
+    policy: {
+      maxEntries: 50, // if unspecified, it can have unlimited entries
+      stdTTL: 0, // the standard ttl as number in seconds, default: 0 (unlimited)
+    },
+    backend: AsyncStorage,
+  });
+
+  const toggleSwitch = async () => {
+    setIsEnabled((previousState) => !previousState);
+    const newMode = mode == "light" ? "dark" : "light";
+    setMode(newMode);
+    await cache.set("display_mode", newMode);
+  };
+
   {
     return (
       <SafeAreaView style={settingsStyles.mainContainer}>
@@ -26,31 +47,37 @@ const Settings = () => {
           <View>
             <Text style={settingsStyles.subTitleText}>Preferences</Text>
 
-            <TouchableOpacity>
+            {/* <TouchableOpacity>
               <Text style={settingsStyles.preferencesText}>Notification</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             <View style={{ flex: 1, flexDirection: "row" }}>
               <Text style={settingsStyles.preferencesText}>Dark Mode</Text>
-              <Switch style={settingsStyles.swiches} />
+              <Switch
+                value={isEnabled}
+                onValueChange={toggleSwitch}
+                style={settingsStyles.swiches}
+              />
             </View>
 
-            <View style={{ flex: 1, flexDirection: "row" }}>
+            {/* <View style={{ flex: 1, flexDirection: "row" }}>
               <Text style={settingsStyles.preferencesText}>
                 Show Quote On Home Screen
               </Text>
               <Switch style={settingsStyles.swiches} />
-            </View>
+            </View> */}
 
             <Text style={settingsStyles.subTitleText}>Support</Text>
 
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => Linking.openURL("mailto:udayskhatri@gmail.com")}
+            >
               <Text style={settingsStyles.preferencesText}>Contact Us</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            {/* <TouchableOpacity>
               <Text style={settingsStyles.preferencesText}>Help and FAQs</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             <Text style={settingsStyles.subTitleText}>Legal</Text>
 
@@ -58,9 +85,9 @@ const Settings = () => {
               <Text style={settingsStyles.preferencesText}>Privacy Policy</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            {/* <TouchableOpacity>
               <Text style={settingsStyles.preferencesText}>Terms Of Use</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             {/* Currently we are not authenticating users so currently we don't need logout button */}
             <Button
@@ -73,6 +100,7 @@ const Settings = () => {
               onPress={() => {
                 signOutUser();
               }}
+              titleStyle={{ color: theme.colors.white }}
               title="Logout"
             />
 

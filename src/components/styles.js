@@ -1,8 +1,9 @@
 import { StyleSheet, Platform, Dimensions } from "react-native";
-import { useTheme } from "@rneui/themed";
+import { useTheme, useThemeMode } from "@rneui/themed";
 import { globalStyles } from "../screens/globalStyles";
 const styles = () => {
   const { theme } = useTheme();
+  const { mode } = useThemeMode();
   const windowWidth = Dimensions.get("window").width;
   return StyleSheet.create({
     suggestionModal: {
@@ -118,7 +119,7 @@ const styles = () => {
       height: 180,
       borderRadius: 8,
       resizeMode: "contain",
-      backgroundColor: theme.colors.grey5,
+      backgroundColor: theme.colors.grey3,
     },
     title: {
       fontSize: globalStyles.fontSet.title3,
@@ -127,7 +128,7 @@ const styles = () => {
     },
     description: {
       fontSize: globalStyles.fontSet.subhead,
-      color: theme.colors.grey3,
+      color: theme.colors.grey0,
       paddingTop: 5,
     },
     textContainer: {
@@ -145,20 +146,24 @@ const styles = () => {
       width: 80,
       height: 20,
       marginBottom: 10,
+      tintColor: theme.colors.black,
     },
     backgroundContainer: {
       backgroundColor: theme.colors.modalBG,
     },
-    backgroundShadow: {
-      shadowColor: theme.colors.grey0,
-      shadowOffset: {
-        width: 2,
-        height: 2,
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-      elevation: 5,
-    },
+    backgroundShadow:
+      mode === "dark"
+        ? {}
+        : {
+            shadowColor: theme.colors.grey1,
+            shadowOffset: {
+              width: 2,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            elevation: 5,
+          },
     tinyLogo: {
       width: 120,
       height: 120,
@@ -180,7 +185,7 @@ const styles = () => {
     suggestionHeader: {
       fontSize: globalStyles.fontSet.title2,
       fontWeight: "bold",
-      color: theme.colors.black,
+      color: "#000",
       textAlign: "center",
       paddingHorizontal: 20,
       paddingVertical: 40,

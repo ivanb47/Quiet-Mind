@@ -18,7 +18,7 @@ import ItemCard from "../../components/ItemCard";
 import MusicCard from "../../components/MusicCard";
 import { ShowAllButton } from "../../components/ReusableComponents";
 import styles from "./homeStyles";
-import { ThemeProvider, useTheme } from "@rneui/themed";
+import { useThemeMode, useTheme } from "@rneui/themed";
 import { LinearGradient } from "expo-linear-gradient";
 import { QuoteAPI, SuggestionAPI } from "../../networkCode/APIs";
 import { useLinkProps } from "@react-navigation/native";
@@ -43,6 +43,8 @@ const Home = (props) => {
   const [sound, setSound] = React.useState();
   const [isPlaying, setIsPlaying] = useState(false);
   const [playingSongIndex, setPlayingSongIndex] = useState(null);
+
+  const { mode, setMode } = useThemeMode();
 
   React.useEffect(() => {
     return sound
@@ -155,13 +157,22 @@ const Home = (props) => {
         <ScrollView style={homeStyles.contentContainer}>
           <View>
             <Image
-              source={require("../../assets/Logos/Quiet_mind-blk-1.png")}
+              source={
+                mode == "light"
+                  ? require("../../assets/Logos/Quiet_mind-blk-1.png")
+                  : require("../../assets/Logos/Quiet_mind-clr2.png")
+              }
               style={homeStyles.logo}
             />
           </View>
-
-          <Text style={homeStyles.titleText}>
-            Quote of the day
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <Text style={homeStyles.titleText}>Quote of the day</Text>
             <TouchableOpacity>
               <AntDesign
                 name="sharealt"
@@ -172,7 +183,8 @@ const Home = (props) => {
                 title="Share"
               />
             </TouchableOpacity>
-          </Text>
+          </View>
+
           <QuoteBox
             style={homeStyles}
             quote={quoteAPI?.quote}
@@ -187,7 +199,7 @@ const Home = (props) => {
             <View style={homeStyles.textContainer}>
               <Text style={homeStyles.title}>Feeling bored?</Text>
               <Text
-                style={[homeStyles.description, { color: theme.colors.grey2 }]}
+                style={[homeStyles.description, { color: theme.colors.grey0 }]}
               >
                 Click to get some suggestion to overcome your boredom
               </Text>
