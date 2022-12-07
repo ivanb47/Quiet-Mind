@@ -191,6 +191,7 @@ const styles = () => {
       padding: 20,
       justifyContent: "center",
       fontWeight: "bold",
+      color: theme.colors.white
     },
     modalButton: {
       backgroundColor: theme.colors.modalButton,
@@ -209,6 +210,7 @@ const styles = () => {
       margin: 20,
       fontSize: 15,
       alignContent: "center",
+      color: theme.colors.white
     },
   });
 };
