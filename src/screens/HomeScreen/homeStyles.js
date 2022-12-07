@@ -1,13 +1,10 @@
 import { StyleSheet, Platform, StatusBar, Dimensions } from "react-native";
-import { useTheme } from "@rneui/themed";
+import { useTheme, useThemeMode } from "@rneui/themed";
 import { globalStyles } from "../globalStyles";
-
-
-
-
 
 const styles = () => {
   const { theme } = useTheme();
+  const { mode } = useThemeMode();
   const windowWidth = Dimensions.get("window").width;
   return StyleSheet.create({
     mainContainer: {
@@ -23,10 +20,9 @@ const styles = () => {
       fontSize: globalStyles.fontSet.title1,
       color: theme.colors.primary,
       justifyContent: "space-between",
-      
     },
-    shareIcon:{
-      marginLeft: 140,
+    shareIcon: {
+      marginRight: 20,
       fontSize: globalStyles.fontSet.title1,
       color: theme.colors.primary,
     },
@@ -41,14 +37,13 @@ const styles = () => {
       paddingTop: 10,
       flexDirection: "row",
       width: "100%",
-
     },
     suggestionCardRow: {
       opacity: 0.9,
       marginTop: 20,
       marginBottom: 20,
       width: windowWidth - 40,
-      backgroundColor: theme.colors.grey4,
+      backgroundColor: theme.colors.grey3,
       borderRadius: 15,
       padding: 15,
       marginHorizontal: 20,
@@ -99,16 +94,19 @@ const styles = () => {
       color: theme.colors.grey0,
       paddingHorizontal: 10,
     },
-    backgroundShadow: {
-      shadowColor: theme.colors.grey0,
-      shadowOffset: {
-        width: 2,
-        height: 2,
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-      elevation: 7,
-    },
+    backgroundShadow:
+      mode === "dark"
+        ? {}
+        : {
+            shadowColor: theme.colors.grey1,
+            shadowOffset: {
+              width: 2,
+              height: 2,
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            elevation: 5,
+          },
   });
 };
 

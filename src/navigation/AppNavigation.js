@@ -1,9 +1,9 @@
 import { View, Text, Platform } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
-import { ThemeProvider } from "@rneui/themed";
-import { useTheme } from "@rneui/themed";
+import { useTheme, useThemeMode } from "@rneui/themed";
 import * as SplashScreen from "expo-splash-screen";
+import { StatusBar } from "expo-status-bar";
 // Imports for navigation handling
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -19,6 +19,10 @@ import ExerciseListScreen from "../screens/ExerciseListScreen/ExerciseList";
 import MusicListScreen from "../screens/MusicListScreen/MusicList";
 import CardsListScreen from "../screens/CardsListScreen/CardsList";
 
+// library used for caching
+import { Cache } from "react-native-cache";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 // navigation stack initialization for screens
 const LoginStack = createNativeStackNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -32,6 +36,7 @@ const Tab = createBottomTabNavigator();
 import { auth, onAuthStateChanged } from "../firebase/firebase-config";
 
 const LoginStackScreen = () => {
+  const { theme } = useTheme();
   return (
     <LoginStack.Navigator>
       <LoginStack.Screen
@@ -41,6 +46,10 @@ const LoginStackScreen = () => {
           headerLargeTitle: true,
           headerTransparent: true,
           headerTitle: "Login",
+          headerTintColor: theme.colors.black,
+          headerStyle: {
+            backgroundColor: theme.colors.white,
+          },
         }}
       />
       <LoginStack.Screen
@@ -50,17 +59,26 @@ const LoginStackScreen = () => {
           headerLargeTitle: true,
           headerTransparent: true,
           headerTitle: "Sign Up",
+          headerTintColor: theme.colors.black,
+          headerStyle: {
+            backgroundColor: theme.colors.white,
+          },
         }}
       />
     </LoginStack.Navigator>
   );
 };
 const HomeStackScreen = () => {
+  const { theme } = useTheme();
   return (
     <HomeStack.Navigator
       screenOptions={{
         headerTransparent: Platform.OS == "ios" ? true : false,
         headerLargeTitle: true,
+        headerTintColor: theme.colors.black,
+        headerStyle: {
+          backgroundColor: theme.colors.white,
+        },
       }}
     >
       <HomeStack.Screen
@@ -96,6 +114,7 @@ const HomeStackScreen = () => {
   );
 };
 const SettingStackScreen = () => {
+  const { theme } = useTheme();
   return (
     <SettingStack.Navigator>
       <SettingStack.Screen
@@ -104,23 +123,38 @@ const SettingStackScreen = () => {
         options={{
           headerTitle: "Settings",
           headerLargeTitle: true,
-          // headerShown: false,
+          headerTintColor: theme.colors.black,
+          headerStyle: {
+            backgroundColor: theme.colors.background,
+          },
         }}
       />
     </SettingStack.Navigator>
   );
 };
-
 const ChatStackScreen = () => {
+  const { theme } = useTheme();
   return (
     <ChatStack.Navigator>
-      <ChatStack.Screen name="ChatScreen" component={ChatScreen} />
+      <ChatStack.Screen
+        name="Favorites"
+        options={{
+          headerTitle: "Favorites",
+          headerLargeTitle: true,
+          headerTintColor: theme.colors.black,
+          headerStyle: {
+            backgroundColor: theme.colors.background,
+          },
+        }}
+        component={ChatScreen}
+      />
     </ChatStack.Navigator>
   );
 };
 
 const AppNavigation = () => {
   const { theme } = useTheme();
+  const { mode, setMode } = useThemeMode();
   const [user, setUser] = React.useState(null);
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -131,8 +165,26 @@ const AppNavigation = () => {
       SplashScreen.hideAsync();
     }
   });
+
+  const cache = new Cache({
+    namespace: "QUEST_MIND",
+    policy: {
+      maxEntries: 50, // if unspecified, it can have unlimited entries
+      stdTTL: 0, // the standard ttl as number in seconds, default: 0 (unlimited)
+    },
+    backend: AsyncStorage,
+  });
+  useEffect(() => {
+    async function fetchCache() {
+      const display_mode = await cache.get("display_mode");
+      console.log("display_mode", display_mode);
+      setMode(display_mode);
+    }
+    fetchCache();
+  }, []);
   return (
     <NavigationContainer>
+      <StatusBar style={mode == "dark" ? "light" : "dark"} />
       {user == null ? (
         <LoginStackScreen />
       ) : (

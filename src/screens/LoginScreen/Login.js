@@ -58,7 +58,7 @@ const Login = (props) => {
             )}
           </TouchableOpacity>
           <View style={styles.account}>
-            <Text>
+            <Text style={styles.text}>
               Don't have an account?
               <Text
                 style={styles.sign_up}

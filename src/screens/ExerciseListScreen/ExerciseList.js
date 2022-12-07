@@ -16,7 +16,6 @@ import { SearchBar } from "@rneui/themed";
 import ItemCard from "../../components/ItemCard";
 import excercises from "../../Data/excercise";
 
-
 const ExerciseList = () => {
   const { theme } = useTheme();
   const exerciseStyles = styles();
@@ -30,7 +29,7 @@ const ExerciseList = () => {
     });
     setFilteredExercises(filteredExc);
   };
-  
+
   const headerComponent = useMemo(() => {
     return (
       <View>

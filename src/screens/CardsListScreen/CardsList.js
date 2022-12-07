@@ -47,6 +47,8 @@ const CardsList = () => {
                 cardStyle.textInputContainer,
                 cardStyle.backgroundShadow,
               ]}
+              inputStyle={cardStyle.textInput}
+              containerStyle={cardStyle.searchbarContainer}
               onChangeText={updateSearch}
               value={search}
             />

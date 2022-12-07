@@ -1,8 +1,9 @@
 import { StyleSheet, Platform, StatusBar } from "react-native";
-import { useTheme } from "@rneui/themed";
+import { useTheme, useThemeMode } from "@rneui/themed";
 import { globalStyles } from "../globalStyles";
 const styles = () => {
   const { theme } = useTheme();
+  const { mode } = useThemeMode();
   return StyleSheet.create({
     mainContainer: {
       flex: 1,
@@ -29,16 +30,24 @@ const styles = () => {
       height: 40,
       borderRadius: 10,
     },
+    searchbarContainer: {
+      backgroundColor: "transparent",
+      borderTopColor: "transparent",
+      borderBottomColor: "transparent",
+    },
+    textInput: {
+      color: theme.colors.black,
+    },
 
     backgroundShadow: {
-      shadowColor: theme.colors.grey0,
+      shadowColor: theme.colors.grey1,
       shadowOffset: {
         width: 2,
         height: 2,
       },
       shadowOpacity: 0.25,
       shadowRadius: 3.84,
-      elevation: 7,
+      elevation: 5,
     },
   });
 };

@@ -1,8 +1,9 @@
 import { StyleSheet, Platform, Dimensions } from "react-native";
-import { useTheme } from "@rneui/themed";
+import { useTheme, useThemeMode } from "@rneui/themed";
 import { globalStyles } from "../globalStyles";
 const styles = () => {
   const { theme } = useTheme();
+  const { mode } = useThemeMode();
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
   return StyleSheet.create({
@@ -53,16 +54,15 @@ const styles = () => {
     cardHeight: {
       width: 60,
     },
-
     backgroundShadow: {
-      shadowColor: theme.colors.grey0,
+      shadowColor: theme.colors.grey1,
       shadowOffset: {
         width: 2,
         height: 2,
       },
       shadowOpacity: 0.25,
       shadowRadius: 3.84,
-      elevation: 7,
+      elevation: 5,
     },
   });
 };
