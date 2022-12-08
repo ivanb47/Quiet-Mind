@@ -9,6 +9,7 @@ import {
   View,
   Button,
   TouchableOpacity,
+  Platform,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import React, { useState, useEffect } from "react";
@@ -214,7 +215,7 @@ const Home = (props) => {
           <FlatList
             data={selectTop5Advices()}
             horizontal={true}
-            snapToInterval={windowWidth}
+            snapToInterval={Platform.OS == "ios" ? 0 : windowWidth}
             snapToAlignment={"center"}
             decelerationRate={"fast"}
             showsHorizontalScrollIndicator={false}
