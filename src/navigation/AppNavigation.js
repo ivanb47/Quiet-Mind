@@ -134,7 +134,7 @@ const SettingStackScreen = () => {
         component={TermsScreen}
         options={{
           headerTitle: "Terms",
-          headerLargeTitle: true,
+          // headerLargeTitle: true,
           headerTintColor: theme.colors.black,
           headerStyle: {
             backgroundColor: theme.colors.background,
