@@ -18,7 +18,7 @@ import { useThemeMode } from "@rneui/themed";
 import { Cache } from "react-native-cache";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const Settings = () => {
+const Settings = (props) => {
   const { theme } = useTheme();
   const { mode, setMode } = useThemeMode();
   const settingsStyles = styles();
@@ -81,8 +81,10 @@ const Settings = () => {
 
             <Text style={settingsStyles.subTitleText}>Legal</Text>
 
-            <TouchableOpacity>
-              <Text style={settingsStyles.preferencesText}>Privacy Policy</Text>
+            <TouchableOpacity
+              onPress={() => props.navigation.navigate("TermsScreen")}
+            >
+              <Text style={settingsStyles.preferencesText}>Terms</Text>
             </TouchableOpacity>
 
             {/* <TouchableOpacity>

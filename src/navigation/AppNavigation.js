@@ -18,7 +18,7 @@ import ChatScreen from "../screens/ChatScreen/Chat";
 import ExerciseListScreen from "../screens/ExerciseListScreen/ExerciseList";
 import MusicListScreen from "../screens/MusicListScreen/MusicList";
 import CardsListScreen from "../screens/CardsListScreen/CardsList";
-
+import TermsScreen from "../screens/TermsScreen/TermsScreen";
 // library used for caching
 import { Cache } from "react-native-cache";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -122,6 +122,18 @@ const SettingStackScreen = () => {
         component={SettingsScreen}
         options={{
           headerTitle: "Settings",
+          headerLargeTitle: true,
+          headerTintColor: theme.colors.black,
+          headerStyle: {
+            backgroundColor: theme.colors.background,
+          },
+        }}
+      />
+      <SettingStack.Screen
+        name="TermsScreen"
+        component={TermsScreen}
+        options={{
+          headerTitle: "Terms",
           headerLargeTitle: true,
           headerTintColor: theme.colors.black,
           headerStyle: {
