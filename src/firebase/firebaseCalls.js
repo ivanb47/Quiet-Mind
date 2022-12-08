@@ -124,3 +124,8 @@ export const removeFavoriteAdvice = (adviceID, setIsFavorite) => {
       console.log("error", error);
     });
 };
+export const subscribeFavoriteAdvices = (callback) => {
+  usersRef.doc(auth.currentUser.uid).onSnapshot((querySnapshot) => {
+    callback(querySnapshot.data());
+  });
+};

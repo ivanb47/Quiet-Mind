@@ -49,6 +49,13 @@ const styles = () => {
       shadowRadius: 3.84,
       elevation: 5,
     },
+    headerText: {
+      padding: 20,
+      textAlign: "center",
+      fontSize: globalStyles.fontSet.title1,
+      color: theme.colors.primary,
+      fontWeight: "300",
+    },
   });
 };
 
