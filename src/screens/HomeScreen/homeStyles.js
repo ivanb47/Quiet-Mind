@@ -21,6 +21,12 @@ const styles = () => {
       color: theme.colors.primary,
       justifyContent: "space-between",
     },
+    adviceIndexContainer: {
+      alignSelf: "center",
+      justifyContent: "center",
+      alignContent: "center",
+      width: windowWidth,
+    },
     shareIcon: {
       marginRight: 20,
       fontSize: globalStyles.fontSet.title1,

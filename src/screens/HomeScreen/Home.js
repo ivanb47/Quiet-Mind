@@ -15,7 +15,7 @@ import { AntDesign } from "@expo/vector-icons";
 import React, { useState, useEffect } from "react";
 import QuoteBox from "../../components/QuoteBox";
 import SuggestionCard from "../../components/SuggestionCard";
-import ItemCard from "../../components/ItemCard";
+import ExcCard from "../../components/ItemCard";
 import MusicCard from "../../components/MusicCard";
 import { ShowAllButton } from "../../components/ReusableComponents";
 import styles from "./homeStyles";
@@ -26,6 +26,7 @@ import { useLinkProps } from "@react-navigation/native";
 import { Audio } from "expo-av";
 import ModalComponent from "../../components/ModalComponent";
 import FeelingBoredModal from "../../components/FeelingBoredModal";
+import ExcModel from "../../components/ExcModel";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import excercises from "../../Data/excercise";
 import advices from "../../Data/advices";
@@ -39,6 +40,9 @@ const Home = (props) => {
   const [adviceItem, setAdviceItem] = useState(advices[0]);
   const [suggestion, setSuggestion] = useState("Call your closest friend");
   const [showFeelingBoredModal, setShowFeelingBoredModal] = useState(false);
+  const [showExcModel, setShowExcModel] = useState(false);
+  const [currentAdviceIndex, setCurrentAdviceIndex] = useState(0);
+  const [excItem, setExcItem] = useState(excercises[0]);
   // sound related
 
   const [sound, setSound] = React.useState();
@@ -110,7 +114,7 @@ const Home = (props) => {
 
   const selectTop5Advices = () => {
     return advices.filter((item) => {
-      return item.id < 5 && item;
+      return item.id <= 5 && item;
     });
   };
 
@@ -145,6 +149,10 @@ const Home = (props) => {
     }
   };
 
+  const showExc = (item) => {
+    setExcItem(item);
+    setShowExcModel(true);
+  };
   return (
     <SafeAreaView style={homeStyles.mainContainer}>
       <LinearGradient
@@ -220,6 +228,14 @@ const Home = (props) => {
             decelerationRate={"fast"}
             showsHorizontalScrollIndicator={false}
             keyExtractor={(item) => item.id}
+            onMomentumScrollEnd={(event) => {
+              const index = Math.floor(
+                Math.floor(event.nativeEvent.contentOffset.x) /
+                  Math.floor(event.nativeEvent.layoutMeasurement.width)
+              );
+              setCurrentAdviceIndex(index);
+              console.log(index);
+            }}
             renderItem={(item) => (
               <SuggestionCard
                 style={homeStyles}
@@ -244,6 +260,36 @@ const Home = (props) => {
               marginRight: 20,
             }}
           />
+          <View style={{ flexDirection: "row", justifyContent: "center" }}>
+            <FlatList
+              data={[
+                { key: 0 },
+                { key: 1 },
+                { key: 2 },
+                { key: 3 },
+                { key: 4 },
+              ]}
+              extraData={currentAdviceIndex}
+              horizontal={true}
+              style={{ alignSelf: "center" }}
+              contentContainerStyle={homeStyles.adviceIndexContainer}
+              renderItem={({ item }) => (
+                <View
+                  style={{
+                    height: 5,
+                    width: 5,
+                    marginHorizontal: 5,
+                    alignSelf: "center",
+                    backgroundColor:
+                      item.key == currentAdviceIndex
+                        ? theme.colors.grey1
+                        : theme.colors.grey4,
+                    borderRadius: 5,
+                  }}
+                />
+              )}
+            />
+          </View>
           <Text style={homeStyles.titleText}>Exercises</Text>
           <FlatList
             data={selectTop5Exe()}
@@ -253,9 +299,10 @@ const Home = (props) => {
             showsHorizontalScrollIndicator={false}
             keyExtractor={(item) => item.id}
             renderItem={(item) => (
-              <ItemCard
+              <ExcCard
                 style={homeStyles}
                 item={item}
+                onPress={() => showExc(item)}
                 showDescription={false}
               />
             )}
@@ -296,6 +343,7 @@ const Home = (props) => {
               <ShowAllButton
                 onPress={() => {
                   props.navigation.navigate("MusicList");
+                  PauseAudio();
                 }}
               />
             )}
@@ -317,6 +365,11 @@ const Home = (props) => {
         isVisible={showFeelingBoredModal}
         suggestion={suggestion}
         hideModal={() => setShowFeelingBoredModal(false)}
+      />
+      <ExcModel
+        isVisible={showExcModel}
+        item={excItem}
+        hideModal={() => setShowExcModel(false)}
       />
     </SafeAreaView>
   );
