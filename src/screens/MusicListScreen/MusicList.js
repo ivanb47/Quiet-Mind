@@ -79,7 +79,7 @@ const MusicList = () => {
     return (
       <View>
         <SearchBar
-          placeholder="Search for music"
+          placeholder="Search for sounds"
           inputContainerStyle={[
             musicStyles.textInputContainer,
             musicStyles.backgroundShadow,
@@ -91,7 +91,7 @@ const MusicList = () => {
         />
         {search.length == 0 && (
           <Text style={musicStyles.musicHeader}>
-            Plug in your headphones and enjoy the music.🎧
+            Plug in your headphones and enjoy the calming music.🎧
           </Text>
         )}
       </View>

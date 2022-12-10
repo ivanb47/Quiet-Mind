@@ -107,7 +107,7 @@ const HomeStackScreen = () => {
         name="MusicList"
         component={MusicListScreen}
         options={{
-          headerTitle: "Music",
+          headerTitle: "Soothing sounds",
         }}
       />
     </HomeStack.Navigator>

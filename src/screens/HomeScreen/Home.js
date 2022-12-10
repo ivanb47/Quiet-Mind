@@ -321,7 +321,7 @@ const Home = (props) => {
             }}
           />
 
-          <Text style={homeStyles.titleText}>Musics</Text>
+          <Text style={homeStyles.titleText}>Soothing sounds</Text>
           <FlatList
             data={selectTop5Songs()}
             horizontal={true}
