@@ -30,7 +30,7 @@ export const signUp = async (email, password, name, setLoader) => {
       setLoader(false);
       Toast.show({
         type: "error",
-        text1: `We encountered an error while creating your account`,
+        text1: `Encountered an error while creating account`,
         text2: `Error: ${error.message}`,
       });
       console.log(error);
@@ -57,20 +57,33 @@ export const signIn = async (email, password, setLoader) => {
   signInWithEmailAndPassword(auth, email, password)
     .then((response) => {
       setLoader(false);
-      Toast.show({
-        type: "success",
-        text1: `Hello, ${response.user.displayName} 👋`,
-        text2: "Welcome back to Quiet Mind",
-      });
+      if (response.user) {
+        Toast.show({
+          type: "success",
+          text1: `Hello, ${response.user.displayName} 👋`,
+          text2: "Welcome back to Quiet Mind",
+        });
+      }
     })
     .catch((error) => {
       setLoader(false);
-      Toast.show({
-        type: "error",
-        text1: `We encountered an error while signing you in.`,
-        text2: `Error: ${error.message}`,
-      });
+      console.log(error.message == "Firebase: Error (auth/user-not-found).");
+
+      error.message == "Firebase: Error (auth/invalid-email)."
+        ? showToast("invalid email")
+        : error.message == "Firebase: Error (auth/wrong-password)."
+        ? showToast("wrong password")
+        : error.message == "Firebase: Error (auth/user-not-found)."
+        ? showToast("user not found")
+        : showToast(error.message.split("Firebase: "));
     });
+};
+const showToast = (message) => {
+  Toast.show({
+    type: "error",
+    text1: `We encountered an error while signing you in.`,
+    text2: message,
+  });
 };
 const usersRef = firebase.firestore().collection("users");
 export const saveUser = async (user) => {
