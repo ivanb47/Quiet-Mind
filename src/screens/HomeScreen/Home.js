@@ -223,7 +223,9 @@ const Home = (props) => {
           <FlatList
             data={selectTop5Advices()}
             horizontal={true}
-            snapToInterval={Platform.OS == "ios" ? 0 : windowWidth}
+            snapToInterval={
+              (Platform.OS == currentAdviceIndex) == 4 ? 0 : windowWidth
+            }
             snapToAlignment={"center"}
             decelerationRate={"fast"}
             showsHorizontalScrollIndicator={false}
