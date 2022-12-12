@@ -13,7 +13,7 @@ import { ThemeProvider, useTheme } from "@rneui/themed";
 import styles from "./exerciselistStyles";
 import { LinearGradient } from "expo-linear-gradient";
 import { SearchBar } from "@rneui/themed";
-import ItemCard from "../../components/ItemCard";
+import ExcCard from "../../components/ExcCard";
 import excercises from "../../Data/excercise";
 
 const ExerciseList = () => {
@@ -65,7 +65,7 @@ const ExerciseList = () => {
           decelerationRate={"fast"}
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item) => item.id}
-          renderItem={(item) => <ItemCard style={exerciseStyles} item={item} />}
+          renderItem={(item) => <ExcCard style={exerciseStyles} item={item} />}
           contentContainerStyle={{ paddingBottom: 20 }}
         />
       </LinearGradient>

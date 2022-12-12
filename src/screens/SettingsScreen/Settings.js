@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   Linking,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./settingsStyles";
 import { ThemeProvider, useTheme, Button } from "@rneui/themed";
 import { signOutUser } from "../../firebase/firebaseCalls";
@@ -32,6 +32,17 @@ const Settings = (props) => {
     },
     backend: AsyncStorage,
   });
+
+  useEffect(() => {
+    async function fetchCache() {
+      const displayMode = await cache.get("display_mode");
+      if (displayMode) {
+        setMode(displayMode);
+        setIsEnabled(displayMode == "light" ? false : true);
+      }
+    }
+    fetchCache();
+  }, []);
 
   const toggleSwitch = async () => {
     setIsEnabled((previousState) => !previousState);

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "capstone_project",
-    "slug": "capstone_project",
+    "name": "Quest Mind",
+    "slug": "Quest Mind",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,7 +18,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.udkhatri.capstone_project"
     },
     "android": {
       "adaptiveIcon": {
